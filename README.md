@@ -1,5 +1,7 @@
 # Human Muscular System — Interactive 3D Learning Lab
 
+**Live:** https://muscular-anatomy-lab.vercel.app
+
 An interactive 3D human muscular system for university anatomy and physiology:
 
 - **Anatomy explorer.** 198 muscles and tendons of one adult (BodyParts3D 4.0) in 431 parts, from the eye muscles to the muscles of the sole, grouped into muscles and functional groups (quadriceps, hamstrings, rotator cuff, erector spinae …). Each has its origin, insertion, nerve and roots, actions, blood supply and typical fibre mix. Colour by region, **nerve supply** (cranial, cervical, brachial, thoracic, lumbar, sacral, dorsal rami), **depth** (superficial, intermediate, deep) or **fibre type**; peel the body layer by layer; show the skeleton behind; cut it in three planes; search by everyday names ("quads", "lats", "achilles", "six pack").
@@ -9,6 +11,7 @@ An interactive 3D human muscular system for university anatomy and physiology:
 - **Exercise and fatigue.** Three energy systems with the oxygen-uptake delay and the critical-power model, the muscles each activity uses, training adaptations (strength, endurance, both) and delayed-onset soreness.
 - **Injuries and disorders.** Thirteen conditions shown on the real muscles: hamstring and calf strains (with grades and a recovery curve), rotator-cuff and Achilles tears, tendinopathy, compartment syndrome, rhabdomyolysis, Duchenne and myotonic dystrophy, myasthenia gravis, Lambert–Eaton syndrome, polymyositis and sarcopenia; with readers for creatine kinase and the MRC power grade.
 - **Guided tour** of 25 steps through all of it.
+- Works on phones and tablets: the details rise from the bottom in a sheet you can drag, fold or close with a swipe down, and picking a muscle frames it above the sheet.
 
 **Educational only.** This is not a clinical tool, and the text has not been reviewed by a physician. The muscles are BodyParts3D (DBCLS). BodyParts3D 4.0 has no latissimus dorsi, rectus abdominis, internal oblique, transversus abdominis, quadratus lumborum, masseter, temporalis, pterygoids or facial muscles (checked against its official parts list), so those 27 are **modelled in code** on this body's bones and marked "modelled". Credits and licences are in [public/ATTRIBUTION.md](public/ATTRIBUTION.md) and in the About sheet.
 

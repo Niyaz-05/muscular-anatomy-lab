@@ -53,7 +53,7 @@ Results recorded on 2026-10-28 on Windows 11, Node 22.14.0. The browser suite ra
 | E2E, GPU | **Pass**: 24/24 in 3.0 minutes |
 | E2E, software (SwiftShader) | **Pass**: 4/4 @smoke tests in 1.2 minutes |
 | GPU check (Chrome, AMD Radeon, D3D11) | Every mode, pose, close-up and the 25-step tour render with no console errors; posing the whole body re-skins 129k vertices without a visible stall |
-| Live site | Not published yet |
+| Live site (2026-10-30) | **Pass**: https://muscular-anatomy-lab.vercel.app returns the page; `models/muscles.glb` and `models/skeleton.glb` are served with their recorded sha256 (`5365faa41176…`, `760829effac2…`); search, the muscle details and the phone layout work with no console errors (the 3D view itself was not waited for in the slow preview pane; it was tested on the same build on the GPU) |
 
 
 ## Defects found and fixed during QA
@@ -68,7 +68,7 @@ Results recorded on 2026-10-28 on Windows 11, Node 22.14.0. The browser suite ra
 
 ## Not verified
 
-- **Physical devices other than one AMD integrated GPU.** No phone, tablet or discrete GPU was tested; the phone layout is the older one from the skeletal lab (the responsive layer is being piloted on the heart lab first). Firefox and Safari were not run.
+- **Physical devices other than one AMD integrated GPU.** No phone, tablet or discrete GPU was tested; phone and tablet layouts were tested with Chrome device emulation at six sizes (see the responsive scenarios), not on a real device. Firefox and Safari were not run.
 - **Automated accessibility audit.** axe-core is not installed; keyboard paths and ARIA labels were checked by hand and by E2E only.
 - **Medical review.** The text follows OpenStax A&P 2e, Gray's Anatomy, Kendall, Moore and the cited papers; no anatomist, physiotherapist or neurologist has reviewed it.
 - **The models are teaching models.** Joints turn about fixed axes; muscles bend by skinning to their two nearest bones, so a muscle's shape in a pose, its length change and the paths of fan-shaped muscles are approximate (the extreme case is a muscle that slides over a bone, which the model does not do); the modelled muscles are shaped from their attachments and are not anatomical scans; force, energy-system, training and soreness figures are typical values; recovery times are averages for elite athletes (hamstrings) or typical ranges. None is for diagnosis or treatment.
