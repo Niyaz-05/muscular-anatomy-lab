@@ -1,0 +1,1872 @@
+{
+ "outputs": {
+  "muscles": {
+   "file": "public/models/muscles.glb",
+   "bytes": 7032680,
+   "sha256": "5365faa411766b61ee617ed41123b8a3bec724ea674cc4246948c6e92b8cfa7e",
+   "triangles": 253417,
+   "sourceTriangles": 680102,
+   "maxErrorPct": 1.192342
+  }
+ },
+ "sources": {
+  "bodyparts3d": {
+   "name": "BodyParts3D 4.0 (Database Center for Life Science), via the Human Atlas build",
+   "license": "CC-BY-4.0",
+   "intermediate": "github.com/Niyaz-05/human-atlas, commit 76f069640f2c3dd40a58d1556896ac25008f592e",
+   "atlasJsonSha256": "c359f4bcd2cba90b7411d66d5e9fc04dc81294d46cd5c1e8b212c824f2e5bbee",
+   "chunkSha256": {
+    "body-0.bin": "b33b2b5aac20f35fbf6871f916607bf3c4d386321c8c0fdadcca6b5d24e3641e",
+    "body-1.bin": "aa077a4675f0d0dd3c9b0af39dc8cf6bcb348c3bf7d283478d4206ce30a5a0de",
+    "body-9.bin": "0aa8aa09a379a2d759872659a2ef68fc4510ee37e435c4ebc63ee679722a4547",
+    "body-2.bin": "4b3acfc35b91e4427eaca0e3be897d33f144354342ae0e52a2328b582ca8bdbe",
+    "body-3.bin": "6febb76b50423331f66802a63bb43f04f99ce08129837015910eed43d0719268",
+    "body-4.bin": "0509e6c996fe5b935ace770a5dbf2d83a474330b7e541a844052a080bbf814bb",
+    "body-5.bin": "32a967198ffed45839968228898f3d246c67f86fb26892c3ae270be30e2f1149",
+    "body-10.bin": "4a959d998acd35cf88518a0f2f8ab99b42d9f69c7ce0d6a814df315eeac807ac",
+    "body-11.bin": "e8c1afe7f30fe710ad164ec9cd2287a32881606e7eb590af47d76b3f84405027"
+   },
+   "parts": {
+    "inferior-oblique-left": [
+     "FJ1294 Left inferior oblique"
+    ],
+    "inferior-rectus-left": [
+     "FJ1295 Left inferior rectus"
+    ],
+    "lateral-rectus-left": [
+     "FJ1304 Left lateral rectus"
+    ],
+    "levator-palpebrae-superioris-left": [
+     "FJ1306 Left levator palpebrae superioris"
+    ],
+    "medial-rectus-left": [
+     "FJ1308 Left medial rectus"
+    ],
+    "superior-oblique-left": [
+     "FJ1322 Left superior oblique"
+    ],
+    "superior-rectus-left": [
+     "FJ1323 Left superior rectus"
+    ],
+    "superior-oblique-trochlea-left": [
+     "FJ1329 Trochlea of left superior oblique"
+    ],
+    "inferior-oblique-right": [
+     "FJ1345 Right inferior oblique"
+    ],
+    "inferior-rectus-right": [
+     "FJ1346 Right inferior rectus"
+    ],
+    "lateral-rectus-right": [
+     "FJ1355 Right lateral rectus"
+    ],
+    "levator-palpebrae-superioris-right": [
+     "FJ1357 Right levator palpebrae superioris"
+    ],
+    "medial-rectus-right": [
+     "FJ1359 Right medial rectus"
+    ],
+    "superior-oblique-right": [
+     "FJ1373 Right superior oblique"
+    ],
+    "superior-rectus-right": [
+     "FJ1374 Right superior rectus"
+    ],
+    "superior-oblique-trochlea-right": [
+     "FJ1380 Trochlea of right superior oblique"
+    ],
+    "first-lumbrical-of-foot-right": [
+     "FJ1383 First lumbrical of right foot"
+    ],
+    "first-lumbrical-of-foot-left": [
+     "FJ1383M First lumbrical of left foot"
+    ],
+    "first-plantar-interosseous-of-foot-right": [
+     "FJ1384 First plantar interosseous of right foot"
+    ],
+    "first-plantar-interosseous-of-foot-left": [
+     "FJ1384M First plantar interosseous of left foot"
+    ],
+    "second-lumbrical-of-foot-right": [
+     "FJ1385 Second lumbrical of right foot"
+    ],
+    "second-lumbrical-of-foot-left": [
+     "FJ1385M Second lumbrical of left foot"
+    ],
+    "second-plantar-interosseous-of-foot-right": [
+     "FJ1386 Second plantar interosseous of right foot"
+    ],
+    "second-plantar-interosseous-of-foot-left": [
+     "FJ1386M Second plantar interosseous of left foot"
+    ],
+    "third-lumbrical-of-foot-right": [
+     "FJ1387 Third lumbrical of right foot"
+    ],
+    "third-lumbrical-of-foot-left": [
+     "FJ1387M Third lumbrical of left foot"
+    ],
+    "third-plantar-interosseous-of-foot-right": [
+     "FJ1388 Third plantar interosseous of right foot"
+    ],
+    "third-plantar-interosseous-of-foot-left": [
+     "FJ1388M Third plantar interosseous of left foot"
+    ],
+    "fourth-lumbrical-of-foot-right": [
+     "FJ1389 Fourth lumbrical of right foot"
+    ],
+    "fourth-lumbrical-of-foot-left": [
+     "FJ1389M Fourth lumbrical of left foot"
+    ],
+    "abductor-digiti-minimi-of-foot-right": [
+     "FJ1390 Abductor digiti minimi of right foot"
+    ],
+    "abductor-digiti-minimi-of-foot-left": [
+     "FJ1390M Abductor digiti minimi of left foot"
+    ],
+    "flexor-digiti-minimi-brevis-of-foot-right": [
+     "FJ1391 Flexor digiti minimi brevis of right foot"
+    ],
+    "flexor-digiti-minimi-brevis-of-foot-left": [
+     "FJ1391M Flexor digiti minimi brevis of left foot"
+    ],
+    "flexor-hallucis-brevis-lateral-head-right": [
+     "FJ1393 Lateral head of right flexor hallucis brevis"
+    ],
+    "flexor-hallucis-brevis-lateral-head-left": [
+     "FJ1393M Lateral head of left flexor hallucis brevis"
+    ],
+    "gastrocnemius-lateral-head-right": [
+     "FJ1394 Lateral head of right gastrocnemius"
+    ],
+    "gastrocnemius-lateral-head-left": [
+     "FJ1394M Lateral head of left gastrocnemius"
+    ],
+    "biceps-femoris-long-head-right": [
+     "FJ1395 Long head of right biceps femoris"
+    ],
+    "biceps-femoris-long-head-left": [
+     "FJ1395M Long head of left biceps femoris"
+    ],
+    "flexor-hallucis-brevis-medial-head-right": [
+     "FJ1396 Medial head of right flexor hallucis brevis"
+    ],
+    "flexor-hallucis-brevis-medial-head-left": [
+     "FJ1396M Medial head of left flexor hallucis brevis"
+    ],
+    "gastrocnemius-medial-head-right": [
+     "FJ1397 Medial head of right gastrocnemius"
+    ],
+    "gastrocnemius-medial-head-left": [
+     "FJ1397M Medial head of left gastrocnemius"
+    ],
+    "adductor-hallucis-oblique-head-right": [
+     "FJ1398 Oblique head of right adductor hallucis"
+    ],
+    "adductor-hallucis-oblique-head-left": [
+     "FJ1398M Oblique head of left adductor hallucis"
+    ],
+    "opponens-digiti-minimi-of-foot-right": [
+     "FJ1399 Opponens digiti minimi of right foot"
+    ],
+    "opponens-digiti-minimi-of-foot-left": [
+     "FJ1399M Opponens digiti minimi of left foot"
+    ],
+    "abductor-hallucis-right": [
+     "FJ1400 Right abductor hallucis"
+    ],
+    "abductor-hallucis-left": [
+     "FJ1400M Left abductor hallucis"
+    ],
+    "adductor-brevis-right": [
+     "FJ1401 Right adductor brevis"
+    ],
+    "adductor-brevis-left": [
+     "FJ1401M Left adductor brevis"
+    ],
+    "adductor-longus-right": [
+     "FJ1402 Right adductor longus"
+    ],
+    "adductor-longus-left": [
+     "FJ1402M Left adductor longus"
+    ],
+    "adductor-magnus-right": [
+     "FJ1403 Right adductor magnus"
+    ],
+    "adductor-magnus-left": [
+     "FJ1403M Left adductor magnus"
+    ],
+    "adductor-minimus-right": [
+     "FJ1404 Right adductor minimus"
+    ],
+    "adductor-minimus-left": [
+     "FJ1404M Left adductor minimus"
+    ],
+    "calcaneal-tendon-right": [
+     "FJ1405 Right calcaneal tendon"
+    ],
+    "calcaneal-tendon-left": [
+     "FJ1405M Left calcaneal tendon"
+    ],
+    "extensor-digitorum-longus-right": [
+     "FJ1406 Right extensor digitorum longus"
+    ],
+    "extensor-digitorum-longus-left": [
+     "FJ1406M Left extensor digitorum longus"
+    ],
+    "extensor-hallucis-brevis-right": [
+     "FJ1407 Right extensor hallucis brevis"
+    ],
+    "extensor-hallucis-brevis-left": [
+     "FJ1407M Left extensor hallucis brevis"
+    ],
+    "extensor-hallucis-longus-right": [
+     "FJ1408 Right extensor hallucis longus"
+    ],
+    "extensor-hallucis-longus-left": [
+     "FJ1408M Left extensor hallucis longus"
+    ],
+    "fibularis-brevis-right": [
+     "FJ1409 Right fibularis brevis"
+    ],
+    "fibularis-brevis-left": [
+     "FJ1409M Left fibularis brevis"
+    ],
+    "fibularis-longus-right": [
+     "FJ1410 Right fibularis longus"
+    ],
+    "fibularis-longus-left": [
+     "FJ1410M Left fibularis longus"
+    ],
+    "fibularis-tertius-right": [
+     "FJ1411 Right fibularis tertius"
+    ],
+    "fibularis-tertius-left": [
+     "FJ1411M Left fibularis tertius"
+    ],
+    "flexor-accessorius-right": [
+     "FJ1412 Right flexor accessorius"
+    ],
+    "flexor-accessorius-left": [
+     "FJ1412M Left flexor accessorius"
+    ],
+    "flexor-digitorum-brevis-right": [
+     "FJ1413 Right flexor digitorum brevis"
+    ],
+    "flexor-digitorum-brevis-left": [
+     "FJ1413M Left flexor digitorum brevis"
+    ],
+    "flexor-digitorum-longus-right": [
+     "FJ1414 Right flexor digitorum longus"
+    ],
+    "flexor-digitorum-longus-left": [
+     "FJ1414M Left flexor digitorum longus"
+    ],
+    "flexor-hallucis-longus-right": [
+     "FJ1415 Right flexor hallucis longus"
+    ],
+    "flexor-hallucis-longus-left": [
+     "FJ1415M Left flexor hallucis longus"
+    ],
+    "gemellus-inferior-right": [
+     "FJ1416 Right gemellus inferior"
+    ],
+    "gemellus-inferior-left": [
+     "FJ1416M Left gemellus inferior"
+    ],
+    "gemellus-superior-right": [
+     "FJ1417 Right gemellus superior"
+    ],
+    "gemellus-superior-left": [
+     "FJ1417M Left gemellus superior"
+    ],
+    "gluteus-maximus-right": [
+     "FJ1418 Right gluteus maximus"
+    ],
+    "gluteus-maximus-left": [
+     "FJ1418M Left gluteus maximus"
+    ],
+    "gluteus-medius-right": [
+     "FJ1419 Right gluteus medius"
+    ],
+    "gluteus-medius-left": [
+     "FJ1419M Left gluteus medius"
+    ],
+    "gluteus-minimus-right": [
+     "FJ1420 Right gluteus minimus"
+    ],
+    "gluteus-minimus-left": [
+     "FJ1420M Left gluteus minimus"
+    ],
+    "gracilis-right": [
+     "FJ1421 Right gracilis"
+    ],
+    "gracilis-left": [
+     "FJ1421M Left gracilis"
+    ],
+    "iliacus-right": [
+     "FJ1422 Right iliacus"
+    ],
+    "iliacus-left": [
+     "FJ1422M Left iliacus"
+    ],
+    "iliotibial-tract-right": [
+     "FJ1423 Right iliotibial tract"
+    ],
+    "iliotibial-tract-left": [
+     "FJ1423M Left iliotibial tract"
+    ],
+    "obturator-externus-right": [
+     "FJ1425 Right obturator externus"
+    ],
+    "obturator-externus-left": [
+     "FJ1425M Left obturator externus"
+    ],
+    "obturator-internus-right": [
+     "FJ1426 Right obturator internus"
+    ],
+    "obturator-internus-left": [
+     "FJ1426M Left obturator internus"
+    ],
+    "pectineus-right": [
+     "FJ1427 Right pectineus"
+    ],
+    "pectineus-left": [
+     "FJ1427M Left pectineus"
+    ],
+    "piriformis-right": [
+     "FJ1428 Right piriformis"
+    ],
+    "piriformis-left": [
+     "FJ1428M Left piriformis"
+    ],
+    "plantaris-right": [
+     "FJ1429 Right plantaris"
+    ],
+    "plantaris-left": [
+     "FJ1429M Left plantaris"
+    ],
+    "popliteus-right": [
+     "FJ1430 Right popliteus"
+    ],
+    "popliteus-left": [
+     "FJ1430M Left popliteus"
+    ],
+    "psoas-major-right": [
+     "FJ1431 Right psoas major"
+    ],
+    "psoas-major-left": [
+     "FJ1431M Left psoas major"
+    ],
+    "quadratus-femoris-right": [
+     "FJ1432 Right quadratus femoris"
+    ],
+    "quadratus-femoris-left": [
+     "FJ1432M Left quadratus femoris"
+    ],
+    "rectus-femoris-right": [
+     "FJ1433 Right rectus femoris"
+    ],
+    "rectus-femoris-left": [
+     "FJ1433M Left rectus femoris"
+    ],
+    "sartorius-right": [
+     "FJ1434 Right sartorius"
+    ],
+    "sartorius-left": [
+     "FJ1434M Left sartorius"
+    ],
+    "semimembranosus-right": [
+     "FJ1435 Right semimembranosus"
+    ],
+    "semimembranosus-left": [
+     "FJ1435M Left semimembranosus"
+    ],
+    "semitendinosus-right": [
+     "FJ1436 Right semitendinosus"
+    ],
+    "semitendinosus-left": [
+     "FJ1436M Left semitendinosus"
+    ],
+    "soleus-right": [
+     "FJ1437 Right soleus"
+    ],
+    "soleus-left": [
+     "FJ1437M Left soleus"
+    ],
+    "tensor-fasciae-latae-right": [
+     "FJ1438 Right tensor fasciae latae"
+    ],
+    "tensor-fasciae-latae-left": [
+     "FJ1438M Left tensor fasciae latae"
+    ],
+    "tibialis-anterior-right": [
+     "FJ1439 Right tibialis anterior"
+    ],
+    "tibialis-anterior-left": [
+     "FJ1439M Left tibialis anterior"
+    ],
+    "tibialis-posterior-right": [
+     "FJ1440 Right tibialis posterior"
+    ],
+    "tibialis-posterior-left": [
+     "FJ1440M Left tibialis posterior"
+    ],
+    "vastus-intermedius-right": [
+     "FJ1441 Right vastus intermedius"
+    ],
+    "vastus-intermedius-left": [
+     "FJ1441M Left vastus intermedius"
+    ],
+    "vastus-lateralis-right": [
+     "FJ1442 Right vastus lateralis"
+    ],
+    "vastus-lateralis-left": [
+     "FJ1442M Left vastus lateralis"
+    ],
+    "vastus-medialis-right": [
+     "FJ1443 Right vastus medialis"
+    ],
+    "vastus-medialis-left": [
+     "FJ1443M Left vastus medialis"
+    ],
+    "biceps-femoris-short-head-right": [
+     "FJ1444 Short head of right biceps femoris"
+    ],
+    "biceps-femoris-short-head-left": [
+     "FJ1444M Short head of left biceps femoris"
+    ],
+    "adductor-hallucis-transverse-head-right": [
+     "FJ1445 Transverse head of right adductor hallucis"
+    ],
+    "adductor-hallucis-transverse-head-left": [
+     "FJ1445M Transverse head of left adductor hallucis"
+    ],
+    "pectoralis-major-abdominal-part-right": [
+     "FJ1446 Abdominal part of right pectoralis major"
+    ],
+    "pectoralis-major-abdominal-part-left": [
+     "FJ1446M Abdominal part of left pectoralis major"
+    ],
+    "pectoralis-major-clavicular-part-right": [
+     "FJ1447 Clavicular part of right pectoralis major"
+    ],
+    "pectoralis-major-clavicular-part-left": [
+     "FJ1447M Clavicular part of left pectoralis major"
+    ],
+    "linea-alba": [
+     "FJ1448 Linea alba"
+    ],
+    "coccygeus-left": [
+     "FJ1449M Left coccygeus",
+     "FJ2542 Left coccygeus"
+    ],
+    "superficial-perineal": [
+     "FJ1450 superficial perineal muscle"
+    ],
+    "external-anal-sphincter": [
+     "FJ1450M External anal sphincter",
+     "FJ2543 External anal sphincter",
+     "FJ2548 External anal sphincter"
+    ],
+    "external-intercostal-right": [
+     "FJ1451 external intercostal muscle"
+    ],
+    "external-intercostal-left": [
+     "FJ1451M External intercostal muscle"
+    ],
+    "external-oblique-right": [
+     "FJ1452 Right external oblique"
+    ],
+    "external-oblique-left": [
+     "FJ1452M Left external oblique"
+    ],
+    "levator-ani-iliococcygeus-left": [
+     "FJ1453M Left iliococcygeus",
+     "FJ2544 Left iliococcygeus"
+    ],
+    "innermost-intercostal-right": [
+     "FJ1454 innermost intercostal muscle"
+    ],
+    "innermost-intercostal-left": [
+     "FJ1454M Innermost intercostal muscle"
+    ],
+    "internal-intercostal-right": [
+     "FJ1455 internal intercostal muscle"
+    ],
+    "internal-intercostal-left": [
+     "FJ1455M Internal intercostal muscle"
+    ],
+    "pectoralis-minor-right": [
+     "FJ1456 Right pectoralis minor"
+    ],
+    "pectoralis-minor-left": [
+     "FJ1456M Left pectoralis minor"
+    ],
+    "levator-ani-pubococcygeus-left": [
+     "FJ1457M Left pubococcygeus",
+     "FJ2545 Left pubococcygeus"
+    ],
+    "levator-ani-puborectalis-left": [
+     "FJ1458M Left puborectalis",
+     "FJ2546 Left puborectalis"
+    ],
+    "serratus-anterior-right": [
+     "FJ1459 Right serratus anterior"
+    ],
+    "serratus-anterior-left": [
+     "FJ1459M Left serratus anterior"
+    ],
+    "subclavius-right": [
+     "FJ1460 Right subclavius"
+    ],
+    "subclavius-left": [
+     "FJ1460M Left subclavius"
+    ],
+    "transversus-thoracis-right": [
+     "FJ1461 Right transversus thoracis"
+    ],
+    "transversus-thoracis-left": [
+     "FJ1461M Left transversus thoracis"
+    ],
+    "levatores-costarum-breves-right": [
+     "FJ1462 Set of right levatores costarum breves"
+    ],
+    "levatores-costarum-breves-left": [
+     "FJ1462M Set of left levatores costarum breves"
+    ],
+    "levatores-costarum-longi-right": [
+     "FJ1463 Set of right levatores costarum longi"
+    ],
+    "levatores-costarum-longi-left": [
+     "FJ1463M Set of left levatores costarum longi"
+    ],
+    "pectoralis-major-sternocostal-part-right": [
+     "FJ1464 Sternocostal part of right pectoralis major"
+    ],
+    "pectoralis-major-sternocostal-part-left": [
+     "FJ1464M Sternocostal part of left pectoralis major"
+    ],
+    "levator-ani-tendinous-arch-right": [
+     "FJ1465 tendinous arch of levator ani",
+     "FJ2553 Tendinous arch of levator ani"
+    ],
+    "levator-ani-tendinous-arch-left": [
+     "FJ1465M Tendinous arch of levator ani",
+     "FJ2552 Tendinous arch of levator ani"
+    ],
+    "abductor-digiti-minimi-of-hand-right": [
+     "FJ1466 Abductor digiti minimi of right hand"
+    ],
+    "abductor-digiti-minimi-of-hand-left": [
+     "FJ1466M Abductor digiti minimi of left hand"
+    ],
+    "deltoid-acromial-part-right": [
+     "FJ1467 Acromial part of right deltoid"
+    ],
+    "deltoid-acromial-part-left": [
+     "FJ1467M Acromial part of left deltoid"
+    ],
+    "deltoid-clavicular-part-right": [
+     "FJ1468 Clavicular part of right deltoid"
+    ],
+    "deltoid-clavicular-part-left": [
+     "FJ1468M Clavicular part of left deltoid"
+    ],
+    "flexor-pollicis-brevis-right": [
+     "FJ1469 Left flexor pollicis brevis"
+    ],
+    "flexor-pollicis-brevis-left": [
+     "FJ1469M Right flexor pollicis brevis"
+    ],
+    "flexor-digiti-minimi-brevis-of-hand-right": [
+     "FJ1470 Flexor digiti minimi brevis of right hand"
+    ],
+    "flexor-digiti-minimi-brevis-of-hand-left": [
+     "FJ1470M Flexor digiti minimi brevis of left hand"
+    ],
+    "extensor-carpi-ulnaris-right": [
+     "FJ1472 Right extensor carpi ulnaris",
+     "FJ1517 Right extensor carpi ulnaris"
+    ],
+    "extensor-carpi-ulnaris-left": [
+     "FJ1472M Left extensor carpi ulnaris",
+     "FJ1517M Left extensor carpi ulnaris"
+    ],
+    "flexor-carpi-ulnaris-humeral-head-right": [
+     "FJ1473 Humeral head of right flexor carpi ulnaris"
+    ],
+    "flexor-carpi-ulnaris-humeral-head-left": [
+     "FJ1473M Humeral head of left flexor carpi ulnaris"
+    ],
+    "pronator-teres-humeral-head-right": [
+     "FJ1474 Humeral head of right pronator teres"
+    ],
+    "pronator-teres-humeral-head-left": [
+     "FJ1474M Humeral head of left pronator teres"
+    ],
+    "flexor-digitorum-superficialis-right": [
+     "FJ1475 Right flexor digitorum superficialis",
+     "FJ1499 Right flexor digitorum superficialis"
+    ],
+    "flexor-digitorum-superficialis-left": [
+     "FJ1475M Left flexor digitorum superficialis",
+     "FJ1499M Left flexor digitorum superficialis"
+    ],
+    "triceps-brachii-lateral-head-right": [
+     "FJ1477 Lateral head of right triceps brachii"
+    ],
+    "triceps-brachii-lateral-head-left": [
+     "FJ1477M Lateral head of left triceps brachii"
+    ],
+    "biceps-brachii-long-head-right": [
+     "FJ1478 Long head of right biceps brachii"
+    ],
+    "biceps-brachii-long-head-left": [
+     "FJ1478M Long head of left biceps brachii"
+    ],
+    "triceps-brachii-long-head-right": [
+     "FJ1479 Long head of right triceps brachii"
+    ],
+    "triceps-brachii-long-head-left": [
+     "FJ1479M Long head of left triceps brachii"
+    ],
+    "triceps-brachii-medial-head-right": [
+     "FJ1480 Medial head of right triceps brachii"
+    ],
+    "triceps-brachii-medial-head-left": [
+     "FJ1480M Medial head of left triceps brachii"
+    ],
+    "adductor-pollicis-oblique-head-right": [
+     "FJ1481 Oblique head of right adductor pollicis"
+    ],
+    "adductor-pollicis-oblique-head-left": [
+     "FJ1481M Oblique head of left adductor pollicis"
+    ],
+    "opponens-digiti-minimi-of-hand-right": [
+     "FJ1482 Opponens digiti minimi of right hand"
+    ],
+    "opponens-digiti-minimi-of-hand-left": [
+     "FJ1482M Opponens digiti minimi of left hand"
+    ],
+    "abductor-pollicis-brevis-right": [
+     "FJ1483 Right abductor pollicis brevis"
+    ],
+    "abductor-pollicis-brevis-left": [
+     "FJ1483M Left abductor pollicis brevis"
+    ],
+    "abductor-pollicis-longus-right": [
+     "FJ1484 Right abductor pollicis longus"
+    ],
+    "abductor-pollicis-longus-left": [
+     "FJ1484M Left abductor pollicis longus"
+    ],
+    "anconeus-right": [
+     "FJ1485 Right anconeus"
+    ],
+    "anconeus-left": [
+     "FJ1485M Left anconeus"
+    ],
+    "brachialis-right": [
+     "FJ1486 Right brachialis"
+    ],
+    "brachialis-left": [
+     "FJ1486M Left brachialis"
+    ],
+    "brachioradialis-right": [
+     "FJ1487 Right brachioradialis"
+    ],
+    "brachioradialis-left": [
+     "FJ1487M Left brachioradialis"
+    ],
+    "coracobrachialis-right": [
+     "FJ1488 Right coracobrachialis"
+    ],
+    "coracobrachialis-left": [
+     "FJ1488M Left coracobrachialis"
+    ],
+    "extensor-carpi-radialis-brevis-right": [
+     "FJ1489 Right extensor carpi radialis brevis"
+    ],
+    "extensor-carpi-radialis-brevis-left": [
+     "FJ1489M Left extensor carpi radialis brevis"
+    ],
+    "extensor-carpi-radialis-longus-right": [
+     "FJ1490 Right extensor carpi radialis longus"
+    ],
+    "extensor-carpi-radialis-longus-left": [
+     "FJ1490M Left extensor carpi radialis longus"
+    ],
+    "extensor-digiti-minimi-right": [
+     "FJ1491 Right extensor digiti minimi"
+    ],
+    "extensor-digiti-minimi-left": [
+     "FJ1491M Left extensor digiti minimi"
+    ],
+    "extensor-digitorum-right": [
+     "FJ1492 Right extensor digitorum"
+    ],
+    "extensor-digitorum-left": [
+     "FJ1492M Left extensor digitorum"
+    ],
+    "extensor-indicis-right": [
+     "FJ1493 Right extensor indicis"
+    ],
+    "extensor-indicis-left": [
+     "FJ1493M Left extensor indicis"
+    ],
+    "extensor-pollicis-brevis-right": [
+     "FJ1494 Right extensor pollicis brevis"
+    ],
+    "extensor-pollicis-brevis-left": [
+     "FJ1494M Left extensor pollicis brevis"
+    ],
+    "extensor-pollicis-longus-right": [
+     "FJ1495 Right extensor pollicis longus"
+    ],
+    "extensor-pollicis-longus-left": [
+     "FJ1495M Left extensor pollicis longus"
+    ],
+    "flexor-carpi-radialis-right": [
+     "FJ1496 Right flexor carpi radialis"
+    ],
+    "flexor-carpi-radialis-left": [
+     "FJ1496M Left flexor carpi radialis"
+    ],
+    "flexor-digitorum-profundus-right": [
+     "FJ1497 Right flexor digitorum profundus"
+    ],
+    "flexor-digitorum-profundus-left": [
+     "FJ1497M Left flexor digitorum profundus"
+    ],
+    "flexor-pollicis-longus-right": [
+     "FJ1498 Right flexor pollicis longus"
+    ],
+    "flexor-pollicis-longus-left": [
+     "FJ1498M Left flexor pollicis longus"
+    ],
+    "infraspinatus-right": [
+     "FJ1500 Right infraspinatus muscle"
+    ],
+    "infraspinatus-left": [
+     "FJ1500M Left infraspinatus muscle"
+    ],
+    "opponens-pollicis-right": [
+     "FJ1501 Right opponens pollicis"
+    ],
+    "opponens-pollicis-left": [
+     "FJ1501M Left opponens pollicis"
+    ],
+    "palmaris-longus-right": [
+     "FJ1502 Right palmaris longus"
+    ],
+    "palmaris-longus-left": [
+     "FJ1502M Left palmaris longus"
+    ],
+    "pronator-quadratus-right": [
+     "FJ1503 Right pronator quadratus"
+    ],
+    "pronator-quadratus-left": [
+     "FJ1503M Left pronator quadratus"
+    ],
+    "subscapularis-right": [
+     "FJ1504 Right subscapularis"
+    ],
+    "subscapularis-left": [
+     "FJ1504M Left subscapularis"
+    ],
+    "supinator-right": [
+     "FJ1505 Right supinator"
+    ],
+    "supinator-left": [
+     "FJ1505M Left supinator"
+    ],
+    "supraspinatus-right": [
+     "FJ1506 Right supraspinatus"
+    ],
+    "supraspinatus-left": [
+     "FJ1506M Left supraspinatus"
+    ],
+    "teres-major-right": [
+     "FJ1507 Right teres major"
+    ],
+    "teres-major-left": [
+     "FJ1507M Left teres major"
+    ],
+    "teres-minor-right": [
+     "FJ1508 Right teres minor"
+    ],
+    "teres-minor-left": [
+     "FJ1508M Left teres minor"
+    ],
+    "dorsal-interossei-of-hand-right": [
+     "FJ1509 Set of dorsal interossei of right hand"
+    ],
+    "dorsal-interossei-of-hand-left": [
+     "FJ1509M Set of dorsal interossei of left hand"
+    ],
+    "lumbricals-of-hand-right": [
+     "FJ1510 Set of lumbricals of right hand"
+    ],
+    "lumbricals-of-hand-left": [
+     "FJ1510M Set of lumbricals of left hand"
+    ],
+    "palmar-interossei-of-hand-right": [
+     "FJ1511 Set of palmar interossei of right hand"
+    ],
+    "palmar-interossei-of-hand-left": [
+     "FJ1511M Set of palmar interossei of left hand"
+    ],
+    "biceps-brachii-short-head-right": [
+     "FJ1512 Short head of right biceps brachii"
+    ],
+    "biceps-brachii-short-head-left": [
+     "FJ1512M Short head of left biceps brachii"
+    ],
+    "deltoid-spinal-part-right": [
+     "FJ1513 Spinal part of right deltoid"
+    ],
+    "deltoid-spinal-part-left": [
+     "FJ1513M Spinal part of left deltoid"
+    ],
+    "flexor-pollicis-brevis-superficial-head-right": [
+     "FJ1514 Superficial head of right flexor pollicis brevis"
+    ],
+    "flexor-pollicis-brevis-superficial-head-left": [
+     "FJ1514M Superficial head of left flexor pollicis brevis"
+    ],
+    "adductor-pollicis-transverse-head-right": [
+     "FJ1515 Transverse head of right adductor pollicis"
+    ],
+    "adductor-pollicis-transverse-head-left": [
+     "FJ1515M Transverse head of left adductor pollicis"
+    ],
+    "pronator-teres-ulnar-head-right": [
+     "FJ1516 Ulnar head of right pronator teres"
+    ],
+    "pronator-teres-ulnar-head-left": [
+     "FJ1516M Ulnar head of left pronator teres"
+    ],
+    "flexor-carpi-ulnaris-ulnar-head-right": [
+     "FJ1518 Ulnar head of right flexor carpi ulnaris"
+    ],
+    "flexor-carpi-ulnaris-ulnar-head-left": [
+     "FJ1518M Ulnar head of left flexor carpi ulnaris"
+    ],
+    "trapezius-ascending-part-right": [
+     "FJ1520 Ascending part of right trapezius"
+    ],
+    "trapezius-ascending-part-left": [
+     "FJ1520M Ascending part of left trapezius"
+    ],
+    "trapezius-descending-part-right": [
+     "FJ1521 Descending part of right trapezius"
+    ],
+    "trapezius-descending-part-left": [
+     "FJ1521M Descending part of left trapezius"
+    ],
+    "lumbar-rotator-right": [
+     "FJ1522 Right lumbar rotator"
+    ],
+    "lumbar-rotator-left": [
+     "FJ1522M Left lumbar rotator"
+    ],
+    "cervical-rotator-right": [
+     "FJ1524 Right cervical rotator"
+    ],
+    "cervical-rotator-left": [
+     "FJ1524M Left cervical rotator"
+    ],
+    "thoracic-rotator-right": [
+     "FJ1525 thoracic rotator"
+    ],
+    "thoracic-rotator-left": [
+     "FJ1525M Thoracic rotator"
+    ],
+    "iliocostalis-cervicis-right": [
+     "FJ1526 Right iliocostalis cervicis"
+    ],
+    "iliocostalis-cervicis-left": [
+     "FJ1526M Left iliocostalis cervicis"
+    ],
+    "iliocostalis-lumborum-right": [
+     "FJ1527 Right iliocostalis lumborum"
+    ],
+    "iliocostalis-lumborum-left": [
+     "FJ1527M Left iliocostalis lumborum"
+    ],
+    "iliocostalis-thoracis-right": [
+     "FJ1528 Right iliocostalis thoracis"
+    ],
+    "iliocostalis-thoracis-left": [
+     "FJ1528M Left iliocostalis thoracis"
+    ],
+    "levator-scapulae-right": [
+     "FJ1532 Right levator scapulae"
+    ],
+    "levator-scapulae-left": [
+     "FJ1532M Left levator scapulae"
+    ],
+    "longissimus-capitis-right": [
+     "FJ1533 Right longissimus capitis"
+    ],
+    "longissimus-capitis-left": [
+     "FJ1533M Left longissimus capitis"
+    ],
+    "longissimus-cervicis-right": [
+     "FJ1534 Right longissimus cervicis"
+    ],
+    "longissimus-cervicis-left": [
+     "FJ1534M Left longissimus cervicis"
+    ],
+    "longissimus-thoracis-right": [
+     "FJ1535 Right longissimus thoracis"
+    ],
+    "longissimus-thoracis-left": [
+     "FJ1535M Left longissimus thoracis"
+    ],
+    "rhomboid-major-right": [
+     "FJ1536 Right rhomboid major"
+    ],
+    "rhomboid-major-left": [
+     "FJ1536M Left rhomboid major"
+    ],
+    "rhomboid-minor-right": [
+     "FJ1537 Right rhomboid minor"
+    ],
+    "rhomboid-minor-left": [
+     "FJ1537M Left rhomboid minor"
+    ],
+    "semispinalis-capitis-right": [
+     "FJ1538 Right semispinalis capitis"
+    ],
+    "semispinalis-capitis-left": [
+     "FJ1538M Left semispinalis capitis"
+    ],
+    "semispinalis-cervicis-right": [
+     "FJ1539 Right semispinalis cervicis"
+    ],
+    "semispinalis-cervicis-left": [
+     "FJ1539M Left semispinalis cervicis"
+    ],
+    "semispinalis-thoracis-right": [
+     "FJ1540 Right semispinalis thoracis"
+    ],
+    "semispinalis-thoracis-left": [
+     "FJ1540M Left semispinalis thoracis"
+    ],
+    "serratus-posterior-inferior-right": [
+     "FJ1541 Right serratus posterior inferior"
+    ],
+    "serratus-posterior-inferior-left": [
+     "FJ1541M Left serratus posterior inferior"
+    ],
+    "serratus-posterior-superior-right": [
+     "FJ1542 Right serratus posterior superior"
+    ],
+    "serratus-posterior-superior-left": [
+     "FJ1542M Left serratus posterior superior"
+    ],
+    "spinalis": [
+     "FJ1543 spinalis",
+     "FJ1543M Spinalis"
+    ],
+    "spinalis-thoracis-right": [
+     "FJ1544 Right spinalis thoracis"
+    ],
+    "spinalis-thoracis-left": [
+     "FJ1544M Left spinalis thoracis"
+    ],
+    "splenius-capitis-right": [
+     "FJ1545 Right splenius capitis"
+    ],
+    "splenius-capitis-left": [
+     "FJ1545M Left splenius capitis"
+    ],
+    "splenius-cervicis-right": [
+     "FJ1546 Right splenius cervicis"
+    ],
+    "splenius-cervicis-left": [
+     "FJ1546M Left splenius cervicis"
+    ],
+    "lateral-lumbar-intertransversarius-right": [
+     "FJ1547 lateral lumbar intertransversarius"
+    ],
+    "lateral-lumbar-intertransversarius-left": [
+     "FJ1547M Lateral lumbar intertransversarius"
+    ],
+    "medial-lumbar-intertransversarius-right": [
+     "FJ1548 medial lumbar intertransversarius"
+    ],
+    "medial-lumbar-intertransversarius-left": [
+     "FJ1548M Medial lumbar intertransversarius"
+    ],
+    "anterior-cervical-intertransversarii-right": [
+     "FJ1549 set of anterior cervical intertransversarii"
+    ],
+    "anterior-cervical-intertransversarii-left": [
+     "FJ1549M Set of anterior cervical intertransversarii"
+    ],
+    "interspinales-lumborum": [
+     "FJ1550 set of interspinales lumborum",
+     "FJ1550M Set of interspinales lumborum"
+    ],
+    "interspinalis-thoracis-right": [
+     "FJ1551 Right interspinalis thoracis"
+    ],
+    "interspinalis-thoracis-left": [
+     "FJ1551M Left interspinalis thoracis"
+    ],
+    "interspinales-cervicis": [
+     "FJ1552 set of interspinales cervicis",
+     "FJ1552M Set of interspinales cervicis"
+    ],
+    "posterior-cervical-intertransversarii-right": [
+     "FJ1553 set of posterior cervical intertransversarii"
+    ],
+    "posterior-cervical-intertransversarii-left": [
+     "FJ1553M Set of posterior cervical intertransversarii"
+    ],
+    "trapezius-transverse-part-right": [
+     "FJ1554 Transverse part of right trapezius"
+    ],
+    "trapezius-transverse-part-left": [
+     "FJ1554M Transverse part of left trapezius"
+    ],
+    "digastric-left": [
+     "FJ1555 Left digastric",
+     "FJ1560 Left digastric",
+     "FJ1578 Left digastric"
+    ],
+    "digastric-right": [
+     "FJ1556 Right digastric",
+     "FJ1579 Right digastric"
+    ],
+    "platysma-left": [
+     "FJ1558 Left platysma"
+    ],
+    "geniohyoid-left": [
+     "FJ1559 Left geniohyoid"
+    ],
+    "longus-capitis-left": [
+     "FJ1561 Left longus capitis"
+    ],
+    "mylohyoid-left": [
+     "FJ1562 Left mylohyoid"
+    ],
+    "obliquus-capitis-inferior-left": [
+     "FJ1563 Left obliquus capitis inferior"
+    ],
+    "obliquus-capitis-superior-left": [
+     "FJ1564 Left obliquus capitis superior"
+    ],
+    "omohyoid-left": [
+     "FJ1565 Left omohyoid"
+    ],
+    "rectus-capitis-anterior-left": [
+     "FJ1566 Left rectus capitis anterior"
+    ],
+    "rectus-capitis-posterior-major-left": [
+     "FJ1567 Left rectus capitis posterior major"
+    ],
+    "rectus-capitis-posterior-minor-left": [
+     "FJ1568 Left rectus capitis posterior minor"
+    ],
+    "rectus-capitis-lateralis-left": [
+     "FJ1569 Left rectus capitis lateralis"
+    ],
+    "scalenus-anterior-left": [
+     "FJ1570 Left scalenus anterior"
+    ],
+    "scalenus-medius-left": [
+     "FJ1571 Left scalenus medius"
+    ],
+    "scalenus-posterior-left": [
+     "FJ1572 Left scalenus posterior"
+    ],
+    "sternocleidomastoid-left": [
+     "FJ1573 Left sternocleidomastoid"
+    ],
+    "sternohyoid-left": [
+     "FJ1574 Left sternohyoid"
+    ],
+    "sternothyroid-left": [
+     "FJ1575 Left sternothyroid"
+    ],
+    "stylohyoid-left": [
+     "FJ1576 Left stylohyoid"
+    ],
+    "thyrohyoid-left": [
+     "FJ1577 Left thyrohyoid"
+    ],
+    "geniohyoid-right": [
+     "FJ1580 Right geniohyoid"
+    ],
+    "longus-capitis-right": [
+     "FJ1582 Right longus capitis"
+    ],
+    "mylohyoid-right": [
+     "FJ1583 Right mylohyoid"
+    ],
+    "obliquus-capitis-inferior-right": [
+     "FJ1584 Right obliquus capitis inferior"
+    ],
+    "obliquus-capitis-superior-right": [
+     "FJ1585 Right obliquus capitis superior"
+    ],
+    "omohyoid-right": [
+     "FJ1586 Right omohyoid"
+    ],
+    "platysma-right": [
+     "FJ1587 Right platysma"
+    ],
+    "rectus-capitis-anterior-right": [
+     "FJ1588 Right rectus capitis anterior"
+    ],
+    "rectus-capitis-posterior-major-right": [
+     "FJ1589 Right rectus capitis posterior major"
+    ],
+    "rectus-capitis-posterior-minor-right": [
+     "FJ1590 Right rectus capitis posterior minor"
+    ],
+    "rectus-capitis-lateralis-right": [
+     "FJ1591 Right rectus capitis lateralis"
+    ],
+    "scalenus-anterior-right": [
+     "FJ1592 Right scalenus anterior"
+    ],
+    "scalenus-medius-right": [
+     "FJ1593 Right scalenus medius"
+    ],
+    "scalenus-posterior-right": [
+     "FJ1594 Right scalenus posterior"
+    ],
+    "sternocleidomastoid-right": [
+     "FJ1595 Right sternocleidomastoid"
+    ],
+    "sternohyoid-right": [
+     "FJ1596 Right sternohyoid"
+    ],
+    "sternothyroid-right": [
+     "FJ1597 Right sternothyroid"
+    ],
+    "stylohyoid-right": [
+     "FJ1598 Right stylohyoid"
+    ],
+    "thyrohyoid-right": [
+     "FJ1599 Right thyrohyoid"
+    ],
+    "coccygeus-right": [
+     "FJ2547 Right coccygeus"
+    ],
+    "levator-ani-iliococcygeus-right": [
+     "FJ2549 Right iliococcygeus"
+    ],
+    "levator-ani-pubococcygeus-right": [
+     "FJ2550 Right pubococcygeus"
+    ],
+    "levator-ani-puborectalis-right": [
+     "FJ2551 Right puborectalis"
+    ],
+    "genioglossus-left": [
+     "FJ2738 Left genioglossus"
+    ],
+    "hyoglossus-left": [
+     "FJ2739 Left hyoglossus"
+    ],
+    "levator-veli-palatini-left": [
+     "FJ2741 Left levator veli palatini"
+    ],
+    "tensor-veli-palatini-left": [
+     "FJ2748 Left tensor veli palatini"
+    ],
+    "genioglossus-right": [
+     "FJ2750 Right genioglossus"
+    ],
+    "hyoglossus-right": [
+     "FJ2751 Right hyoglossus"
+    ],
+    "levator-veli-palatini-right": [
+     "FJ2753 Right levator veli palatini"
+    ],
+    "tensor-veli-palatini-right": [
+     "FJ2760 Right tensor veli palatini"
+    ],
+    "uvular": [
+     "FJ2762 Uvular muscle"
+    ],
+    "aryepiglotticus-left": [
+     "FJ2774 Left aryepiglotticus"
+    ],
+    "lateral-crico-arytenoid-left": [
+     "FJ2778 Left lateral crico-arytenoid"
+    ],
+    "oblique-arytenoid-left": [
+     "FJ2780 Left oblique arytenoid"
+    ],
+    "cricothyroid-oblique-part-left": [
+     "FJ2781 Oblique part of left cricothyroid"
+    ],
+    "posterior-crico-arytenoid-left": [
+     "FJ2782 Left posterior crico-arytenoid"
+    ],
+    "cricothyroid-straight-part-left": [
+     "FJ2783 Straight part of left cricothyroid"
+    ],
+    "thyro-arytenoid-left": [
+     "FJ2784 Left thyro-arytenoid",
+     "FJ2785 Left thyro-arytenoid"
+    ],
+    "vocalis-left": [
+     "FJ2788 Left vocalis"
+    ],
+    "aryepiglotticus-right": [
+     "FJ2791 Right aryepiglotticus"
+    ],
+    "lateral-crico-arytenoid-right": [
+     "FJ2796 Right lateral crico-arytenoid"
+    ],
+    "oblique-arytenoid-right": [
+     "FJ2798 Right oblique arytenoid"
+    ],
+    "cricothyroid-oblique-part-right": [
+     "FJ2799 Oblique part of right cricothyroid"
+    ],
+    "posterior-crico-arytenoid-right": [
+     "FJ2800 Right posterior crico-arytenoid"
+    ],
+    "cricothyroid-straight-part-right": [
+     "FJ2801 Straight part of right cricothyroid"
+    ],
+    "thyro-arytenoid-right": [
+     "FJ2802 Right thyro-arytenoid",
+     "FJ2803 Right thyro-arytenoid"
+    ],
+    "vocalis-right": [
+     "FJ2806 Right vocalis"
+    ],
+    "transverse-arytenoid": [
+     "FJ2809 Transverse arytenoid"
+    ],
+    "diaphragm": [
+     "FJ3131 Diaphragm"
+    ]
+   },
+   "missingFromOfficialRelease": "Checked against https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt (BodyParts3D 4.0): no latissimus dorsi, rectus abdominis, internal oblique, transversus abdominis, quadratus lumborum, masseter, temporalis, pterygoids or facial muscles other than the platysma."
+  },
+  "skeleton": {
+   "file": "public/models/skeleton.glb",
+   "sha256": "760829effac22f757110fff4f70938db82106c5c643cab9f550c4f242a7ee1a9",
+   "centreOffsetMetres": [
+    0,
+    0.860976,
+    0.009021
+   ]
+  },
+  "modelled": {
+   "latissimus-dorsi": "Modelled: a sheet from the spinous processes of T7–L5 and the back of the iliac crest to the floor of the intertubercular groove of the humerus, wrapped over the ribs and the deep back muscles of this body (beneath the trapezius); 3–7 mm thick, tapering to its tendon.",
+   "rectus-abdominis": "Modelled: a strap about 6–8 mm thick from the pubic crest beside the symphysis to the xiphoid and costal cartilages 5–7 of this body, bowed 3 cm forwards like the abdominal wall; its tendinous intersections are not shown.",
+   "internal-oblique": "Modelled: the BodyParts3D external oblique of this body moved 6 mm towards the trunk, trimmed below the 10th rib (the internal oblique reaches the lower three ribs); its fibres run at right angles to the external oblique’s, which the model does not show.",
+   "transversus-abdominis": "Modelled: the BodyParts3D external oblique of this body moved 12 mm towards the trunk, trimmed below the 7th costal cartilage (the transversus arises from the inner surfaces of costal cartilages 7–12).",
+   "quadratus-lumborum": "Modelled: a slab about 2 cm thick in the posterior abdominal wall of this body, from the back of the iliac crest to the lower border of the 12th rib, against the tips of the L1–L4 transverse processes.",
+   "masseter": "Modelled: cast onto the lateral surface of the ramus of this mandible and up to the lower border of the zygomatic arch, 4–11 mm thick.",
+   "temporalis": "Modelled: a fan cast onto the temporal fossa of this skull, from the superior temporal line converging beneath the zygomatic arch onto the coronoid process; 3–7 mm thick.",
+   "lateral-pterygoid": "Modelled: a tube 11 mm across from the lateral pterygoid plate of this sphenoid to the neck of the mandibular condyle.",
+   "medial-pterygoid": "Modelled: a tube about 12 mm across from the pterygoid plates of this sphenoid to the inner surface of the mandibular angle, mirroring the masseter.",
+   "orbicularis-oculi": "Modelled: a ring about 42 × 36 mm round the orbital opening, centred on this body’s eyeball (BodyParts3D sclera).",
+   "occipitofrontalis": "Modelled: its frontal belly cast onto the frontal bone above the brow and its occipital belly onto the occipital bone above the superior nuchal line, 2.5 mm thick; the epicranial aponeurosis between them is not shown.",
+   "zygomaticus-major": "Modelled: a strap from the zygomatic bone of this skull to the corner of the mouth.",
+   "buccinator": "Modelled: a sheet cast onto the outer face of the molars and premolars of this body, from behind the second molar to the corner of the mouth.",
+   "orbicularis-oris": "Modelled: an oval ring about 54 × 28 mm round the mouth, in front of the incisors of this body."
+  }
+ },
+ "changesHere": "Selected and merged the BodyParts3D muscle meshes listed in src/lab/source/muscles.source.json; welded; simplified with meshoptimizer within 1.2 % relative error (to about a fifth to three fifths of the source triangles: the intercostals and the largest sheets most); subdivided and smoothed the smallest; recomputed smooth normals; translated by the skeleton’s centre offset; modelled the muscles the source lacks on this body’s bones; bound every vertex to its two nearest bones; classified each muscle’s depth.",
+ "depth": {
+  "inferior-oblique-left": "superficial",
+  "inferior-rectus-left": "superficial",
+  "lateral-rectus-left": "superficial",
+  "levator-palpebrae-superioris-left": "superficial",
+  "medial-rectus-left": "superficial",
+  "superior-oblique-left": "intermediate",
+  "superior-rectus-left": "intermediate",
+  "superior-oblique-trochlea-left": "superficial",
+  "inferior-oblique-right": "superficial",
+  "inferior-rectus-right": "superficial",
+  "lateral-rectus-right": "superficial",
+  "levator-palpebrae-superioris-right": "superficial",
+  "medial-rectus-right": "intermediate",
+  "superior-oblique-right": "superficial",
+  "superior-rectus-right": "intermediate",
+  "superior-oblique-trochlea-right": "superficial",
+  "first-lumbrical-of-foot-right": "superficial",
+  "first-lumbrical-of-foot-left": "superficial",
+  "first-plantar-interosseous-of-foot-right": "superficial",
+  "first-plantar-interosseous-of-foot-left": "superficial",
+  "second-lumbrical-of-foot-right": "superficial",
+  "second-lumbrical-of-foot-left": "superficial",
+  "second-plantar-interosseous-of-foot-right": "superficial",
+  "second-plantar-interosseous-of-foot-left": "superficial",
+  "third-lumbrical-of-foot-right": "intermediate",
+  "third-lumbrical-of-foot-left": "intermediate",
+  "third-plantar-interosseous-of-foot-right": "superficial",
+  "third-plantar-interosseous-of-foot-left": "superficial",
+  "fourth-lumbrical-of-foot-right": "intermediate",
+  "fourth-lumbrical-of-foot-left": "intermediate",
+  "abductor-digiti-minimi-of-foot-right": "superficial",
+  "abductor-digiti-minimi-of-foot-left": "superficial",
+  "flexor-digiti-minimi-brevis-of-foot-right": "superficial",
+  "flexor-digiti-minimi-brevis-of-foot-left": "superficial",
+  "flexor-hallucis-brevis-lateral-head-right": "superficial",
+  "flexor-hallucis-brevis-lateral-head-left": "superficial",
+  "gastrocnemius-lateral-head-right": "superficial",
+  "gastrocnemius-lateral-head-left": "superficial",
+  "biceps-femoris-long-head-right": "superficial",
+  "biceps-femoris-long-head-left": "superficial",
+  "flexor-hallucis-brevis-medial-head-right": "superficial",
+  "flexor-hallucis-brevis-medial-head-left": "superficial",
+  "gastrocnemius-medial-head-right": "superficial",
+  "gastrocnemius-medial-head-left": "superficial",
+  "adductor-hallucis-oblique-head-right": "superficial",
+  "adductor-hallucis-oblique-head-left": "superficial",
+  "opponens-digiti-minimi-of-foot-right": "superficial",
+  "opponens-digiti-minimi-of-foot-left": "superficial",
+  "abductor-hallucis-right": "superficial",
+  "abductor-hallucis-left": "superficial",
+  "adductor-brevis-right": "deep",
+  "adductor-brevis-left": "deep",
+  "adductor-longus-right": "intermediate",
+  "adductor-longus-left": "intermediate",
+  "adductor-magnus-right": "intermediate",
+  "adductor-magnus-left": "deep",
+  "adductor-minimus-right": "deep",
+  "adductor-minimus-left": "deep",
+  "calcaneal-tendon-right": "superficial",
+  "calcaneal-tendon-left": "superficial",
+  "extensor-digitorum-longus-right": "superficial",
+  "extensor-digitorum-longus-left": "superficial",
+  "extensor-hallucis-brevis-right": "superficial",
+  "extensor-hallucis-brevis-left": "superficial",
+  "extensor-hallucis-longus-right": "superficial",
+  "extensor-hallucis-longus-left": "superficial",
+  "fibularis-brevis-right": "superficial",
+  "fibularis-brevis-left": "superficial",
+  "fibularis-longus-right": "superficial",
+  "fibularis-longus-left": "superficial",
+  "fibularis-tertius-right": "superficial",
+  "fibularis-tertius-left": "superficial",
+  "flexor-accessorius-right": "superficial",
+  "flexor-accessorius-left": "superficial",
+  "flexor-digitorum-brevis-right": "superficial",
+  "flexor-digitorum-brevis-left": "superficial",
+  "flexor-digitorum-longus-right": "superficial",
+  "flexor-digitorum-longus-left": "superficial",
+  "flexor-hallucis-longus-right": "superficial",
+  "flexor-hallucis-longus-left": "superficial",
+  "gemellus-inferior-right": "intermediate",
+  "gemellus-inferior-left": "deep",
+  "gemellus-superior-right": "intermediate",
+  "gemellus-superior-left": "intermediate",
+  "gluteus-maximus-right": "superficial",
+  "gluteus-maximus-left": "superficial",
+  "gluteus-medius-right": "intermediate",
+  "gluteus-medius-left": "intermediate",
+  "gluteus-minimus-right": "intermediate",
+  "gluteus-minimus-left": "intermediate",
+  "gracilis-right": "superficial",
+  "gracilis-left": "superficial",
+  "iliacus-right": "intermediate",
+  "iliacus-left": "intermediate",
+  "iliotibial-tract-right": "superficial",
+  "iliotibial-tract-left": "superficial",
+  "obturator-externus-right": "intermediate",
+  "obturator-externus-left": "intermediate",
+  "obturator-internus-right": "superficial",
+  "obturator-internus-left": "superficial",
+  "pectineus-right": "superficial",
+  "pectineus-left": "superficial",
+  "piriformis-right": "superficial",
+  "piriformis-left": "superficial",
+  "plantaris-right": "intermediate",
+  "plantaris-left": "intermediate",
+  "popliteus-right": "superficial",
+  "popliteus-left": "intermediate",
+  "psoas-major-right": "superficial",
+  "psoas-major-left": "superficial",
+  "quadratus-femoris-right": "intermediate",
+  "quadratus-femoris-left": "intermediate",
+  "rectus-femoris-right": "superficial",
+  "rectus-femoris-left": "superficial",
+  "sartorius-right": "superficial",
+  "sartorius-left": "superficial",
+  "semimembranosus-right": "superficial",
+  "semimembranosus-left": "superficial",
+  "semitendinosus-right": "superficial",
+  "semitendinosus-left": "superficial",
+  "soleus-right": "intermediate",
+  "soleus-left": "intermediate",
+  "tensor-fasciae-latae-right": "superficial",
+  "tensor-fasciae-latae-left": "superficial",
+  "tibialis-anterior-right": "superficial",
+  "tibialis-anterior-left": "superficial",
+  "tibialis-posterior-right": "superficial",
+  "tibialis-posterior-left": "superficial",
+  "vastus-intermedius-right": "deep",
+  "vastus-intermedius-left": "deep",
+  "vastus-lateralis-right": "superficial",
+  "vastus-lateralis-left": "superficial",
+  "vastus-medialis-right": "superficial",
+  "vastus-medialis-left": "superficial",
+  "biceps-femoris-short-head-right": "intermediate",
+  "biceps-femoris-short-head-left": "intermediate",
+  "adductor-hallucis-transverse-head-right": "superficial",
+  "adductor-hallucis-transverse-head-left": "superficial",
+  "pectoralis-major-abdominal-part-right": "intermediate",
+  "pectoralis-major-abdominal-part-left": "intermediate",
+  "pectoralis-major-clavicular-part-right": "superficial",
+  "pectoralis-major-clavicular-part-left": "superficial",
+  "linea-alba": "superficial",
+  "coccygeus-left": "superficial",
+  "superficial-perineal": "superficial",
+  "external-anal-sphincter": "superficial",
+  "external-intercostal-right": "intermediate",
+  "external-intercostal-left": "intermediate",
+  "external-oblique-right": "intermediate",
+  "external-oblique-left": "superficial",
+  "levator-ani-iliococcygeus-left": "intermediate",
+  "innermost-intercostal-right": "intermediate",
+  "innermost-intercostal-left": "intermediate",
+  "internal-intercostal-right": "deep",
+  "internal-intercostal-left": "intermediate",
+  "pectoralis-minor-right": "intermediate",
+  "pectoralis-minor-left": "intermediate",
+  "levator-ani-pubococcygeus-left": "superficial",
+  "levator-ani-puborectalis-left": "intermediate",
+  "serratus-anterior-right": "intermediate",
+  "serratus-anterior-left": "intermediate",
+  "subclavius-right": "intermediate",
+  "subclavius-left": "intermediate",
+  "transversus-thoracis-right": "superficial",
+  "transversus-thoracis-left": "superficial",
+  "levatores-costarum-breves-right": "intermediate",
+  "levatores-costarum-breves-left": "intermediate",
+  "levatores-costarum-longi-right": "intermediate",
+  "levatores-costarum-longi-left": "deep",
+  "pectoralis-major-sternocostal-part-right": "superficial",
+  "pectoralis-major-sternocostal-part-left": "superficial",
+  "levator-ani-tendinous-arch-right": "intermediate",
+  "levator-ani-tendinous-arch-left": "intermediate",
+  "abductor-digiti-minimi-of-hand-right": "superficial",
+  "abductor-digiti-minimi-of-hand-left": "superficial",
+  "deltoid-acromial-part-right": "superficial",
+  "deltoid-acromial-part-left": "superficial",
+  "deltoid-clavicular-part-right": "superficial",
+  "deltoid-clavicular-part-left": "superficial",
+  "flexor-pollicis-brevis-right": "intermediate",
+  "flexor-pollicis-brevis-left": "intermediate",
+  "flexor-digiti-minimi-brevis-of-hand-right": "superficial",
+  "flexor-digiti-minimi-brevis-of-hand-left": "superficial",
+  "extensor-carpi-ulnaris-right": "intermediate",
+  "extensor-carpi-ulnaris-left": "intermediate",
+  "flexor-carpi-ulnaris-humeral-head-right": "superficial",
+  "flexor-carpi-ulnaris-humeral-head-left": "superficial",
+  "pronator-teres-humeral-head-right": "intermediate",
+  "pronator-teres-humeral-head-left": "intermediate",
+  "flexor-digitorum-superficialis-right": "intermediate",
+  "flexor-digitorum-superficialis-left": "intermediate",
+  "triceps-brachii-lateral-head-right": "superficial",
+  "triceps-brachii-lateral-head-left": "superficial",
+  "biceps-brachii-long-head-right": "intermediate",
+  "biceps-brachii-long-head-left": "superficial",
+  "triceps-brachii-long-head-right": "superficial",
+  "triceps-brachii-long-head-left": "intermediate",
+  "triceps-brachii-medial-head-right": "intermediate",
+  "triceps-brachii-medial-head-left": "intermediate",
+  "adductor-pollicis-oblique-head-right": "superficial",
+  "adductor-pollicis-oblique-head-left": "superficial",
+  "opponens-digiti-minimi-of-hand-right": "superficial",
+  "opponens-digiti-minimi-of-hand-left": "superficial",
+  "abductor-pollicis-brevis-right": "superficial",
+  "abductor-pollicis-brevis-left": "superficial",
+  "abductor-pollicis-longus-right": "intermediate",
+  "abductor-pollicis-longus-left": "intermediate",
+  "anconeus-right": "superficial",
+  "anconeus-left": "superficial",
+  "brachialis-right": "intermediate",
+  "brachialis-left": "intermediate",
+  "brachioradialis-right": "superficial",
+  "brachioradialis-left": "superficial",
+  "coracobrachialis-right": "deep",
+  "coracobrachialis-left": "deep",
+  "extensor-carpi-radialis-brevis-right": "intermediate",
+  "extensor-carpi-radialis-brevis-left": "intermediate",
+  "extensor-carpi-radialis-longus-right": "superficial",
+  "extensor-carpi-radialis-longus-left": "superficial",
+  "extensor-digiti-minimi-right": "intermediate",
+  "extensor-digiti-minimi-left": "intermediate",
+  "extensor-digitorum-right": "superficial",
+  "extensor-digitorum-left": "superficial",
+  "extensor-indicis-right": "superficial",
+  "extensor-indicis-left": "superficial",
+  "extensor-pollicis-brevis-right": "superficial",
+  "extensor-pollicis-brevis-left": "superficial",
+  "extensor-pollicis-longus-right": "superficial",
+  "extensor-pollicis-longus-left": "superficial",
+  "flexor-carpi-radialis-right": "superficial",
+  "flexor-carpi-radialis-left": "superficial",
+  "flexor-digitorum-profundus-right": "intermediate",
+  "flexor-digitorum-profundus-left": "intermediate",
+  "flexor-pollicis-longus-right": "intermediate",
+  "flexor-pollicis-longus-left": "intermediate",
+  "infraspinatus-right": "intermediate",
+  "infraspinatus-left": "intermediate",
+  "opponens-pollicis-right": "superficial",
+  "opponens-pollicis-left": "superficial",
+  "palmaris-longus-right": "superficial",
+  "palmaris-longus-left": "superficial",
+  "pronator-quadratus-right": "intermediate",
+  "pronator-quadratus-left": "intermediate",
+  "subscapularis-right": "deep",
+  "subscapularis-left": "deep",
+  "supinator-right": "deep",
+  "supinator-left": "deep",
+  "supraspinatus-right": "intermediate",
+  "supraspinatus-left": "intermediate",
+  "teres-major-right": "deep",
+  "teres-major-left": "deep",
+  "teres-minor-right": "deep",
+  "teres-minor-left": "deep",
+  "dorsal-interossei-of-hand-right": "superficial",
+  "dorsal-interossei-of-hand-left": "superficial",
+  "lumbricals-of-hand-right": "superficial",
+  "lumbricals-of-hand-left": "superficial",
+  "palmar-interossei-of-hand-right": "intermediate",
+  "palmar-interossei-of-hand-left": "superficial",
+  "biceps-brachii-short-head-right": "intermediate",
+  "biceps-brachii-short-head-left": "intermediate",
+  "deltoid-spinal-part-right": "superficial",
+  "deltoid-spinal-part-left": "superficial",
+  "flexor-pollicis-brevis-superficial-head-right": "superficial",
+  "flexor-pollicis-brevis-superficial-head-left": "superficial",
+  "adductor-pollicis-transverse-head-right": "superficial",
+  "adductor-pollicis-transverse-head-left": "superficial",
+  "pronator-teres-ulnar-head-right": "deep",
+  "pronator-teres-ulnar-head-left": "deep",
+  "flexor-carpi-ulnaris-ulnar-head-right": "superficial",
+  "flexor-carpi-ulnaris-ulnar-head-left": "superficial",
+  "trapezius-ascending-part-right": "superficial",
+  "trapezius-ascending-part-left": "superficial",
+  "trapezius-descending-part-right": "superficial",
+  "trapezius-descending-part-left": "superficial",
+  "lumbar-rotator-right": "superficial",
+  "lumbar-rotator-left": "superficial",
+  "cervical-rotator-right": "intermediate",
+  "cervical-rotator-left": "intermediate",
+  "thoracic-rotator-right": "superficial",
+  "thoracic-rotator-left": "superficial",
+  "iliocostalis-cervicis-right": "intermediate",
+  "iliocostalis-cervicis-left": "deep",
+  "iliocostalis-lumborum-right": "intermediate",
+  "iliocostalis-lumborum-left": "intermediate",
+  "iliocostalis-thoracis-right": "intermediate",
+  "iliocostalis-thoracis-left": "intermediate",
+  "levator-scapulae-right": "deep",
+  "levator-scapulae-left": "deep",
+  "longissimus-capitis-right": "intermediate",
+  "longissimus-capitis-left": "intermediate",
+  "longissimus-cervicis-right": "intermediate",
+  "longissimus-cervicis-left": "intermediate",
+  "longissimus-thoracis-right": "intermediate",
+  "longissimus-thoracis-left": "intermediate",
+  "rhomboid-major-right": "deep",
+  "rhomboid-major-left": "deep",
+  "rhomboid-minor-right": "deep",
+  "rhomboid-minor-left": "deep",
+  "semispinalis-capitis-right": "intermediate",
+  "semispinalis-capitis-left": "intermediate",
+  "semispinalis-cervicis-right": "intermediate",
+  "semispinalis-cervicis-left": "intermediate",
+  "semispinalis-thoracis-right": "intermediate",
+  "semispinalis-thoracis-left": "intermediate",
+  "serratus-posterior-inferior-right": "deep",
+  "serratus-posterior-inferior-left": "intermediate",
+  "serratus-posterior-superior-right": "deep",
+  "serratus-posterior-superior-left": "deep",
+  "spinalis": "deep",
+  "spinalis-thoracis-right": "intermediate",
+  "spinalis-thoracis-left": "intermediate",
+  "splenius-capitis-right": "intermediate",
+  "splenius-capitis-left": "intermediate",
+  "splenius-cervicis-right": "deep",
+  "splenius-cervicis-left": "deep",
+  "lateral-lumbar-intertransversarius-right": "deep",
+  "lateral-lumbar-intertransversarius-left": "intermediate",
+  "medial-lumbar-intertransversarius-right": "deep",
+  "medial-lumbar-intertransversarius-left": "deep",
+  "anterior-cervical-intertransversarii-right": "intermediate",
+  "anterior-cervical-intertransversarii-left": "intermediate",
+  "interspinales-lumborum": "intermediate",
+  "interspinalis-thoracis-right": "deep",
+  "interspinalis-thoracis-left": "deep",
+  "interspinales-cervicis": "deep",
+  "posterior-cervical-intertransversarii-right": "deep",
+  "posterior-cervical-intertransversarii-left": "deep",
+  "trapezius-transverse-part-right": "superficial",
+  "trapezius-transverse-part-left": "superficial",
+  "digastric-left": "intermediate",
+  "digastric-right": "intermediate",
+  "platysma-left": "superficial",
+  "geniohyoid-left": "intermediate",
+  "longus-capitis-left": "intermediate",
+  "mylohyoid-left": "intermediate",
+  "obliquus-capitis-inferior-left": "intermediate",
+  "obliquus-capitis-superior-left": "superficial",
+  "omohyoid-left": "deep",
+  "rectus-capitis-anterior-left": "superficial",
+  "rectus-capitis-posterior-major-left": "superficial",
+  "rectus-capitis-posterior-minor-left": "superficial",
+  "rectus-capitis-lateralis-left": "superficial",
+  "scalenus-anterior-left": "intermediate",
+  "scalenus-medius-left": "intermediate",
+  "scalenus-posterior-left": "intermediate",
+  "sternocleidomastoid-left": "superficial",
+  "sternohyoid-left": "intermediate",
+  "sternothyroid-left": "superficial",
+  "stylohyoid-left": "intermediate",
+  "thyrohyoid-left": "intermediate",
+  "geniohyoid-right": "intermediate",
+  "longus-capitis-right": "intermediate",
+  "mylohyoid-right": "intermediate",
+  "obliquus-capitis-inferior-right": "intermediate",
+  "obliquus-capitis-superior-right": "superficial",
+  "omohyoid-right": "intermediate",
+  "platysma-right": "superficial",
+  "rectus-capitis-anterior-right": "superficial",
+  "rectus-capitis-posterior-major-right": "superficial",
+  "rectus-capitis-posterior-minor-right": "superficial",
+  "rectus-capitis-lateralis-right": "superficial",
+  "scalenus-anterior-right": "intermediate",
+  "scalenus-medius-right": "intermediate",
+  "scalenus-posterior-right": "intermediate",
+  "sternocleidomastoid-right": "superficial",
+  "sternohyoid-right": "intermediate",
+  "sternothyroid-right": "superficial",
+  "stylohyoid-right": "intermediate",
+  "thyrohyoid-right": "intermediate",
+  "coccygeus-right": "superficial",
+  "levator-ani-iliococcygeus-right": "superficial",
+  "levator-ani-pubococcygeus-right": "superficial",
+  "levator-ani-puborectalis-right": "intermediate",
+  "genioglossus-left": "intermediate",
+  "hyoglossus-left": "deep",
+  "levator-veli-palatini-left": "superficial",
+  "tensor-veli-palatini-left": "superficial",
+  "genioglossus-right": "intermediate",
+  "hyoglossus-right": "intermediate",
+  "levator-veli-palatini-right": "superficial",
+  "tensor-veli-palatini-right": "superficial",
+  "uvular": "superficial",
+  "aryepiglotticus-left": "intermediate",
+  "lateral-crico-arytenoid-left": "deep",
+  "oblique-arytenoid-left": "intermediate",
+  "cricothyroid-oblique-part-left": "intermediate",
+  "posterior-crico-arytenoid-left": "intermediate",
+  "cricothyroid-straight-part-left": "deep",
+  "thyro-arytenoid-left": "deep",
+  "vocalis-left": "intermediate",
+  "aryepiglotticus-right": "intermediate",
+  "lateral-crico-arytenoid-right": "deep",
+  "oblique-arytenoid-right": "intermediate",
+  "cricothyroid-oblique-part-right": "deep",
+  "posterior-crico-arytenoid-right": "intermediate",
+  "cricothyroid-straight-part-right": "deep",
+  "thyro-arytenoid-right": "deep",
+  "vocalis-right": "intermediate",
+  "transverse-arytenoid": "deep",
+  "diaphragm": "superficial",
+  "latissimus-dorsi-left": "intermediate",
+  "rectus-abdominis-left": "superficial",
+  "internal-oblique-left": "deep",
+  "transversus-abdominis-left": "superficial",
+  "quadratus-lumborum-left": "superficial",
+  "masseter-left": "superficial",
+  "temporalis-left": "superficial",
+  "lateral-pterygoid-left": "deep",
+  "medial-pterygoid-left": "deep",
+  "orbicularis-oculi-left": "deep",
+  "occipitofrontalis-left": "superficial",
+  "zygomaticus-major-left": "deep",
+  "buccinator-left": "superficial",
+  "orbicularis-oris": "deep",
+  "latissimus-dorsi-right": "intermediate",
+  "rectus-abdominis-right": "superficial",
+  "internal-oblique-right": "deep",
+  "transversus-abdominis-right": "superficial",
+  "quadratus-lumborum-right": "superficial",
+  "masseter-right": "superficial",
+  "temporalis-right": "superficial",
+  "lateral-pterygoid-right": "deep",
+  "medial-pterygoid-right": "deep",
+  "orbicularis-oculi-right": "deep",
+  "occipitofrontalis-right": "superficial",
+  "zygomaticus-major-right": "deep",
+  "buccinator-right": "superficial"
+ },
+ "checks": {
+  "latissimusOnTheBack": true,
+  "rectusInFront": true,
+  "obliquesLayered": true,
+  "masseterOnRamus": true,
+  "temporalisAboveMasseter": true,
+  "bicepsOnArm": true,
+  "gastrocnemiusOnLeg": true,
+  "everyMuscleBound": true
+ },
+ "shadingBake": {
+  "tool": "tools/bake-shading.mjs",
+  "attribute": "_TISSUE (VEC4 unsigned byte, normalised): r ambient occlusion, g mottling noise, b fat proximity, a unused",
+  "settings": {
+   "aoDistance": 0.01,
+   "rays": 48,
+   "rayOffset": 0.00025,
+   "noiseFrequency": 260
+  },
+  "bodies": {
+   "muscles": {
+    "occluders": {
+     "eye": [
+      "eye"
+     ],
+     "tongue-larynx": [
+      "tongue-larynx"
+     ],
+     "face": [
+      "face"
+     ],
+     "neck": [
+      "neck"
+     ],
+     "back": [
+      "back"
+     ],
+     "thorax": [
+      "thorax"
+     ],
+     "abdomen": [
+      "abdomen"
+     ],
+     "pelvic-floor": [
+      "pelvic-floor"
+     ],
+     "shoulder": [
+      "shoulder"
+     ],
+     "arm": [
+      "arm"
+     ],
+     "forearm": [
+      "forearm"
+     ],
+     "hand": [
+      "hand"
+     ],
+     "hip": [
+      "hip"
+     ],
+     "thigh": [
+      "thigh"
+     ],
+     "leg": [
+      "leg"
+     ],
+     "foot": [
+      "foot"
+     ]
+    },
+    "unbakedSha256": "1f78e06012e77c5d9ebeceb63f169618cba731a979446dc5c34f5c76a4a4fefe",
+    "bakedSha256": "5365faa411766b61ee617ed41123b8a3bec724ea674cc4246948c6e92b8cfa7e",
+    "vertices": 127461,
+    "layers": {
+     "eye": {
+      "meshes": 16,
+      "meanAO": 0.839,
+      "vertices": 2781
+     },
+     "foot": {
+      "meshes": 36,
+      "meanAO": 0.796,
+      "vertices": 7645
+     },
+     "leg": {
+      "meshes": 30,
+      "meanAO": 0.793,
+      "vertices": 6545
+     },
+     "thigh": {
+      "meshes": 32,
+      "meanAO": 0.779,
+      "vertices": 7843
+     },
+     "hip": {
+      "meshes": 24,
+      "meanAO": 0.864,
+      "vertices": 5060
+     },
+     "thorax": {
+      "meshes": 21,
+      "meanAO": 0.679,
+      "vertices": 15115
+     },
+     "abdomen": {
+      "meshes": 9,
+      "meanAO": 0.667,
+      "vertices": 12502
+     },
+     "pelvic-floor": {
+      "meshes": 12,
+      "meanAO": 0.699,
+      "vertices": 3676
+     },
+     "back": {
+      "meshes": 73,
+      "meanAO": 0.653,
+      "vertices": 20920
+     },
+     "hand": {
+      "meshes": 26,
+      "meanAO": 0.785,
+      "vertices": 6805
+     },
+     "shoulder": {
+      "meshes": 18,
+      "meanAO": 0.849,
+      "vertices": 3228
+     },
+     "forearm": {
+      "meshes": 40,
+      "meanAO": 0.705,
+      "vertices": 9018
+     },
+     "arm": {
+      "meshes": 14,
+      "meanAO": 0.847,
+      "vertices": 2869
+     },
+     "neck": {
+      "meshes": 34,
+      "meanAO": 0.794,
+      "vertices": 8015
+     },
+     "tongue-larynx": {
+      "meshes": 26,
+      "meanAO": 0.785,
+      "vertices": 9228
+     },
+     "face": {
+      "meshes": 17,
+      "meanAO": 0.675,
+      "vertices": 6211
+     }
+    }
+   }
+  }
+ }
+}
