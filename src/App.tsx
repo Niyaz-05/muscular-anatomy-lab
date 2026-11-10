@@ -132,7 +132,7 @@ function Lab() {
       </main>
 
       <header className="identity">
-        <p className="eyebrow"><span className="status-dot" aria-hidden="true" /> Interactive anatomy</p>
+        <p className="eyebrow"><img className="brand-logo" src="/brand/logo-mark.png" alt="pomeylo" width="76" height="18" /> Interactive anatomy</p>
         <h1>Muscular System</h1>
         <p className="identity-meta">{meshCount} structures · BodyParts3D</p>
       </header>

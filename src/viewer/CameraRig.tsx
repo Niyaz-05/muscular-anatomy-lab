@@ -22,6 +22,31 @@ export function fitDistanceInRect(radius: number, fovDeg: number, spanPx: number
   return (radius * margin) / Math.sin(Math.atan(t));
 }
 
+/**
+ * Distance at which an axis-aligned box, seen from `dir` (target → camera) with `up`, fits inside a free
+ * rectangle `spanW` × `spanH` px of a canvas `canvasH` tall, leaving `margin` of it. Tighter than fitting
+ * the bounding sphere: a standing body is tall and narrow, and its sphere wastes most of a wide or
+ * portrait screen.
+ */
+export function fitBoxDistance(lo: readonly number[], hi: readonly number[], dir: THREE.Vector3, up: THREE.Vector3, fovDeg: number, spanW: number, spanH: number, canvasH: number, margin = 0.96): number {
+  const t = Math.tan(THREE.MathUtils.degToRad(fovDeg) / 2) / Math.max(canvasH, 1);
+  const tanV = t * spanH * margin, tanH = t * spanW * margin;
+  const z = dir.clone().normalize();
+  const x = new THREE.Vector3().crossVectors(up, z);
+  if (x.lengthSq() < 1e-8) x.set(1, 0, 0);
+  x.normalize();
+  const y = new THREE.Vector3().crossVectors(z, x);
+  const c = new THREE.Vector3((lo[0]! + hi[0]!) / 2, (lo[1]! + hi[1]!) / 2, (lo[2]! + hi[2]!) / 2);
+  const v = new THREE.Vector3();
+  let d = 0;
+  for (let i = 0; i < 8; i++) {
+    v.set(i & 1 ? hi[0]! : lo[0]!, i & 2 ? hi[1]! : lo[1]!, i & 4 ? hi[2]! : lo[2]!).sub(c);
+    const pz = v.dot(z);
+    d = Math.max(d, pz + Math.abs(v.dot(x)) / tanH, pz + Math.abs(v.dot(y)) / tanV);
+  }
+  return d;
+}
+
 /** Screen space (px) covered by floating panels; the model is framed in what is left. */
 export interface ViewInsets { left: number; right: number; top: number; bottom: number }
 
@@ -102,11 +127,14 @@ export function CameraRig({ reducedMotion, insets }: { reducedMotion: boolean; i
     const target = lo.clone().add(hi).multiplyScalar(0.5);
     const radius = Math.max(lo.distanceTo(hi) / 2, 0.01);
     const dir = new THREE.Vector3(...preset.direction).normalize();
+    const toUp = new THREE.Vector3(...(preset.up ?? [0, 1, 0]));
     const freeW = Math.max(size.width - insets.left - insets.right, 120);
     const freeH = Math.max(size.height - insets.top - insets.bottom, 120);
-    const distance = fitDistanceInRect(radius, camera.fov, Math.min(freeW, freeH), size.height);
+    // A region (`around`) is a sphere; structures are framed by their box, never closer than 2 cm across.
+    const distance = around
+      ? fitDistanceInRect(radius, camera.fov, Math.min(freeW, freeH), size.height)
+      : Math.max(fitBoxDistance(box[0], box[1], dir, toUp, camera.fov, freeW, freeH, size.height), fitDistanceInRect(0.02, camera.fov, Math.min(freeW, freeH), size.height));
     const toPos = target.clone().addScaledVector(dir, distance);
-    const toUp = new THREE.Vector3(...(preset.up ?? [0, 1, 0]));
     flight.current = {
       fromPos: camera.position.clone(), toPos,
       fromTarget: controls.target.clone(), toTarget: target,

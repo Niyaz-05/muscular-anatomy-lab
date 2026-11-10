@@ -5,25 +5,37 @@ import { PLEXUS, type Role } from '../lab/muscle-data';
 import type { TissueLook } from './tissue';
 
 /**
- * Real looks: dark red-brown muscle with a moist sheen, each muscle a little lighter or darker than its
- * neighbours so their edges can be read; glossy off-white tendon and fascia.
+ * Real looks, like a fresh dissection: deep, slightly brownish red muscle with a moist sheen and fascicles
+ * running along it, each muscle a little lighter or darker and warmer or cooler than its neighbours so
+ * their edges can be read; glossy, pearly off-white tendon and aponeurosis where the muscle ends.
  */
-const MUSCLE: TissueLook = { color: '#a9483e', roughness: 0.55, clearcoat: 0.3, clearcoatRoughness: 0.4, sheen: 0.4, sheenColor: '#ffc2b5', rim: 0.2, rimColor: '#ff8c78', ao: 0.9, mottle: 0.3, mottleTint: '#7e2a24' };
-const TENDON: TissueLook = { color: '#e9e0cb', roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.15, sheen: 0.5, sheenColor: '#ffffff', rim: 0.15, rimColor: '#f4f1e8', ao: 0.7, mottle: 0.18, mottleTint: '#c6bca4' };
+/** Tendon and aponeurosis: pearly off-white. */
+export const TENDON_COLOUR = '#e6dfcd';
+const MUSCLE: TissueLook = {
+  color: '#8f3a33', roughness: 0.6, clearcoat: 0.28, clearcoatRoughness: 0.38, sheen: 0.3, sheenColor: '#ffb7a8', rim: 0.16, rimColor: '#ff7a64', ao: 0.95, mottle: 0.32, mottleTint: '#6a2420',
+  tendon: 1, tendonColor: TENDON_COLOUR, tendonRoughness: 0.3, fibre: 0.55, fibreScale: 0.006, edge: 0.45,
+};
+const TENDON: TissueLook = { color: TENDON_COLOUR, roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.15, sheen: 0.5, sheenColor: '#ffffff', rim: 0.15, rimColor: '#f4f1e8', ao: 0.7, mottle: 0.18, mottleTint: '#c6bca4', tendon: 1, tendonColor: TENDON_COLOUR, fibre: 0.25, fibreScale: 0.003 };
 
-const hash = (id: string) => { let h = 2166136261; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619); return ((h >>> 0) % 1000) / 1000; };
-const shade = (hex: string, t: number) => {
+const hash = (id: string, salt = 0) => { let h = 2166136261 ^ salt; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619); h = Math.imul(h ^ (h >>> 15), 2246822507); return ((h >>> 0) % 1000) / 1000; };
+/** A colour a little lighter or darker (t: 0–1) and a little warmer or cooler (u: 0–1). */
+const shade = (hex: string, t: number, u = 0.5) => {
   const n = parseInt(hex.slice(1), 16);
-  const k = 0.86 + t * 0.28;
-  const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((x) => Math.max(0, Math.min(255, Math.round(x * k))));
+  const k = 0.84 + t * 0.32;
+  const warm = (u - 0.5) * 0.12; // ±6 %: towards orange-brown or towards crimson
+  const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((x, i) => Math.max(0, Math.min(255, Math.round(x * k * (i === 1 ? 1 + warm : i === 2 ? 1 - warm : 1)))));
   return `#${c.map((x) => x.toString(16).padStart(2, '0')).join('')}`;
 };
-const isTendon = (s: AnatomicalStructure) => s.muscle?.slow === undefined;
+export const isTendon = (s: AnatomicalStructure) => s.muscle?.slow === undefined;
 
 export function realLook(s: AnatomicalStructure): TissueLook {
   if (isTendon(s)) return TENDON;
-  const look = s.layer === 'face' || s.layer === 'tongue-larynx' ? { ...MUSCLE, color: '#b9564d' } : s.layer === 'eye' ? { ...MUSCLE, color: '#c0605a' } : MUSCLE;
-  return { ...look, color: shade(look.color, hash(s.id)) };
+  const look = s.layer === 'face' || s.layer === 'tongue-larynx' ? { ...MUSCLE, color: '#9c4640' } : s.layer === 'eye' ? { ...MUSCLE, color: '#a8524b' } : MUSCLE;
+  return { ...look, color: shade(look.color, hash(s.id), hash(s.id, 7)) };
+}
+/** The colour the tendon parts of a structure take in its real look. */
+export function tendonColour(s: AnatomicalStructure): string {
+  return isTendon(s) ? realLook(s).color : shade(TENDON_COLOUR, 0.4 + 0.3 * hash(s.id, 3));
 }
 /** Muscles use no lobule texture. */
 export function lobules(_s: AnatomicalStructure): { scale: number; depth: number } | null {

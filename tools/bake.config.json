@@ -64,6 +64,20 @@
    "body": "muscles",
    "model": "public/models/muscles.glb",
    "provenance": "src/lab/generated/muscles-provenance.json",
+   "tendon": {
+    "$comment": "Tendon mask in _TISSUE.a. minBelly: muscles whose belly (85th percentile thickness) is thinner than this get no thickness-based tendon; thin: tendon below thin[0] × belly, fading out by thin[1] × belly; maxThickness: never tendon above this (m); outer: only outside the middle of the muscle along its long axis (distance from the middle, as a share of its length); rules add aponeuroses by node name.",
+    "minBelly": 0.008,
+    "thin": [0.3, 0.5],
+    "maxThickness": 0.008,
+    "outer": [0.06, 0.18],
+    "smooth": 3,
+    "rules": [
+     { "$comment": "Epicranial aponeurosis (galea) between the bellies, 1 mm thick (tools/refine-muscles.mjs).", "match": "^occipitofrontalis-", "thinnerThan": 0.0015 },
+     { "$comment": "The aponeuroses of the abdominal wall: the obliques and transversus turn into aponeurosis medially (the rectus sheath, meeting at the linea alba) and below the line from the anterior superior iliac spine to the umbilicus. border: [height y, distance from the midline |x|] in metres.", "match": "^(external-oblique|internal-oblique|transversus-abdominis)-", "medialOf": { "border": [[-0.02, 0.15], [0.05, 0.115], [0.1, 0.085], [0.16, 0.074], [0.26, 0.076], [0.34, 0.088], [0.42, 0.095]], "soft": 0.014 }, "veil": { "over": "^rectus-abdominis-", "strength": 0.4, "depth": 0.03 } },
+     { "$comment": "The thoracolumbar fascia: latissimus dorsi arises by a broad aponeurosis from the lumbar spines and the iliac crest.", "match": "^latissimus-dorsi-", "medialOf": { "border": [[0.04, 0.115], [0.12, 0.095], [0.2, 0.07], [0.27, 0.045], [0.33, 0.022], [0.38, 0.0]], "soft": 0.02 } },
+     { "$comment": "The three tendinous intersections: at the umbilicus, at the xiphoid and midway (share of the muscle's height from the pubis).", "match": "^rectus-abdominis-", "bands": { "at": [0.45, 0.66, 0.86], "width": 0.009, "wave": 0.0015 } }
+    ]
+   },
    "occluders": {
     "eye": [
      "eye"

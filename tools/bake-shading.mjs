@@ -2,7 +2,8 @@
 /**
  * Bake per-vertex shading data into the lab's models (listed in tools/bake.config.json), for the real-tissue look.
  *
- *   node tools/bake-shading.mjs            (reads tools/bake.config.json)
+ *   node tools/bake-shading.mjs              (reads tools/bake.config.json; every model)
+ *   node tools/bake-shading.mjs muscles      (only the models of the bodies named)
  *
  * Adds one glTF attribute, _TISSUE (VEC4, normalised UNSIGNED_BYTE), to every primitive:
  *   r  ambient occlusion: 1 = open surface, 0 = deep in a fold (rays cast over the hemisphere
@@ -10,7 +11,10 @@
  *   g  mottling: smooth 3D value noise, so tissue is not one flat colour
  *   b  fat: closeness to the `fat.sourceLayers` meshes, in grooves (e.g. epicardial fat along the
  *      coronary vessels)
- *   a  unused (1)
+ *   a  tendon, for a model with a `tendon` entry: 1 where the muscle turns into tendon or aponeurosis,
+ *      found by thickness (rays cast inwards against the mesh itself: a part much thinner than the
+ *      muscle's belly, towards its ends) and by named rules (thin sheets, bands such as the tendinous
+ *      intersections of rectus abdominis); otherwise unused (1)
  * Deterministic: fixed ray directions, no randomness. Re-running on a baked model strips the old
  * _TISSUE first, so the output is the same. Updates each output's size and sha256 in provenance.json.
  * Morph targets (the endometrium, the pregnant uterus) are baked in their base shape.
@@ -25,6 +29,8 @@ import { MeshBVH } from 'three-mesh-bvh';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const config = JSON.parse(fs.readFileSync(path.join(root, 'tools/bake.config.json'), 'utf8'));
+const only = process.argv.slice(2);
+for (const b of only) if (!config.models.some((m) => m.body === b)) throw new Error(`bake.config: no model for body "${b}"`);
 const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 const io = new NodeIO();
 /** One provenance file per entry (`provenance`), defaulting to the config's. */
@@ -35,8 +41,8 @@ function provFor(entry) {
     const prov = JSON.parse(fs.readFileSync(file, 'utf8'));
     prov.shadingBake = {
       tool: 'tools/bake-shading.mjs',
-      attribute: '_TISSUE (VEC4 unsigned byte, normalised): r ambient occlusion, g mottling noise, b fat proximity, a unused',
-      settings: { aoDistance: config.aoDistance, rays: config.rays, rayOffset: config.rayOffset, noiseFrequency: config.noiseFrequency },
+      attribute: `_TISSUE (VEC4 unsigned byte, normalised): r ambient occlusion, g mottling noise, b fat proximity, a ${entry.tendon ? 'tendon and aponeurosis' : 'unused'}`,
+      settings: { aoDistance: config.aoDistance, rays: config.rays, rayOffset: config.rayOffset, noiseFrequency: config.noiseFrequency, ...(entry.tendon ? { tendon: entry.tendon } : {}) },
       bodies: prov.shadingBake?.bodies ?? {},
     };
     provs.set(file, prov);
@@ -46,6 +52,7 @@ function provFor(entry) {
 const summary = {};
 
 for (const entry of config.models) {
+if (only.length && !only.includes(entry.body)) continue;
 const modelPath = path.join(root, entry.model);
 const prov = provFor(entry);
 const doc = await io.readBinary(new Uint8Array(fs.readFileSync(modelPath)));
@@ -162,6 +169,168 @@ function fatAt(x, y, z) {
   return t * t * (3 - 2 * t) * (0.8 + 0.2 * valueNoise(x * F * 1.5 + 3, y * F * 1.5 + 7, z * F * 1.5 + 1));
 }
 
+// ── Tendon and aponeurosis ──────────────────────────────────────────────────
+const smoothstep = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+/** Principal (longest) axis and centroid of a point set, by power iteration on the covariance. */
+function mainAxis(pos) {
+  const n = pos.length / 3, c = [0, 0, 0];
+  for (let i = 0; i < pos.length; i += 3) for (let a = 0; a < 3; a++) c[a] += pos[i + a] / n;
+  const m = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  for (let i = 0; i < pos.length; i += 3) {
+    const d = [pos[i] - c[0], pos[i + 1] - c[1], pos[i + 2] - c[2]];
+    for (let r = 0; r < 3; r++) for (let k = 0; k < 3; k++) m[r * 3 + k] += d[r] * d[k];
+  }
+  let v = [0.577, 0.577, 0.577];
+  for (let it = 0; it < 60; it++) {
+    const w = [0, 1, 2].map((r) => m[r * 3] * v[0] + m[r * 3 + 1] * v[1] + m[r * 3 + 2] * v[2]);
+    const l = Math.hypot(...w) || 1;
+    v = w.map((x) => x / l);
+  }
+  return { axis: new THREE.Vector3(...v), centre: new THREE.Vector3(...c) };
+}
+/**
+ * Per-vertex tendon mask, 0–1. Thickness is the median distance through the mesh along five rays cast
+ * inwards (the normal reversed and tilted 20° four ways). Where a muscle is much thinner than its belly
+ * (the 85th percentile of its thickness) and outside its middle, it is tendon; thin sheets are left
+ * alone because their whole belly is thin. `rules` add aponeuroses by name.
+ */
+function rawTendonMask(it, cfg) {
+  const count = it.positions.length / 3, mask = new Float32Array(count);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(it.positions, 3));
+  g.setIndex(new THREE.BufferAttribute(it.indices, 1));
+  const bvh = new MeshBVH(g);
+  const th = new Float32Array(count), r = new THREE.Ray(), nn = new THREE.Vector3(), t1 = new THREE.Vector3(), t2 = new THREE.Vector3();
+  const tilt = Math.tan(THREE.MathUtils.degToRad(20));
+  for (let v = 0; v < count; v++) {
+    nn.set(it.normals[v * 3], it.normals[v * 3 + 1], it.normals[v * 3 + 2]).negate();
+    t1.set(Math.abs(nn.x) < 0.9 ? 1 : 0, Math.abs(nn.x) < 0.9 ? 0 : 1, 0).cross(nn).normalize();
+    t2.crossVectors(nn, t1);
+    const d = [];
+    for (const [a, b] of [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      r.origin.set(it.positions[v * 3], it.positions[v * 3 + 1], it.positions[v * 3 + 2]);
+      r.direction.copy(nn).addScaledVector(t1, a * tilt).addScaledVector(t2, b * tilt).normalize();
+      const hit = bvh.raycastFirst(r, THREE.DoubleSide, 0.0002, 0.08);
+      d.push(hit ? hit.distance : Infinity);
+    }
+    d.sort((x, y) => x - y);
+    th[v] = d[2];
+  }
+  const finite = [...th].filter(Number.isFinite).sort((x, y) => x - y);
+  const belly = finite.length ? finite[Math.floor(finite.length * 0.85)] : 0;
+  const { axis, centre } = mainAxis(it.positions);
+  let lo = Infinity, hi = -Infinity;
+  const proj = new Float32Array(count);
+  for (let v = 0; v < count; v++) {
+    proj[v] = (it.positions[v * 3] - centre.x) * axis.x + (it.positions[v * 3 + 1] - centre.y) * axis.y + (it.positions[v * 3 + 2] - centre.z) * axis.z;
+    lo = Math.min(lo, proj[v]); hi = Math.max(hi, proj[v]);
+  }
+  if (belly >= cfg.minBelly) {
+    for (let v = 0; v < count; v++) {
+      if (!Number.isFinite(th[v])) continue;
+      const thin = 1 - smoothstep(cfg.thin[0] * belly, cfg.thin[1] * belly, th[v]);
+      const small = 1 - smoothstep(cfg.maxThickness * 0.7, cfg.maxThickness, th[v]);
+      const outer = smoothstep(cfg.outer[0], cfg.outer[1], Math.abs((proj[v] - lo) / (hi - lo || 1) - 0.5));
+      mask[v] = thin * small * outer;
+    }
+  }
+  let bb = null;
+  for (const rule of cfg.rules ?? []) {
+    if (!new RegExp(rule.match).test(it.name)) continue;
+    if (rule.thinnerThan) for (let v = 0; v < count; v++) mask[v] = Math.max(mask[v], 1 - smoothstep(rule.thinnerThan * 0.8, rule.thinnerThan, th[v]));
+    if (rule.medialOf) {
+      // Aponeurosis nearer the midline than a border that varies with height: [[y, |x|], …], linear between.
+      const pts = rule.medialOf.border, soft = rule.medialOf.soft;
+      const borderAt = (y) => {
+        if (y <= pts[0][0]) return pts[0][1];
+        for (let k = 1; k < pts.length; k++) if (y <= pts[k][0]) return pts[k - 1][1] + ((pts[k][1] - pts[k - 1][1]) * (y - pts[k - 1][0])) / (pts[k][0] - pts[k - 1][0]);
+        return pts[pts.length - 1][1];
+      };
+      for (let v = 0; v < count; v++) {
+        const x = Math.abs(it.positions[v * 3]), b = borderAt(it.positions[v * 3 + 1]);
+        mask[v] = Math.max(mask[v], 1 - smoothstep(b - soft / 2, b + soft / 2, x));
+      }
+    }
+    if (rule.bands) {
+      if (!bb) { bb = [Infinity, -Infinity]; for (let v = 0; v < count; v++) { bb[0] = Math.min(bb[0], it.positions[v * 3 + 1]); bb[1] = Math.max(bb[1], it.positions[v * 3 + 1]); } }
+      const half = rule.bands.width / 2;
+      for (let v = 0; v < count; v++) {
+        const y = it.positions[v * 3 + 1], x = it.positions[v * 3];
+        for (const at of rule.bands.at) {
+          // Tendinous intersections are rarely straight: a slight zig-zag across the muscle.
+          const d = Math.abs(y - (bb[0] + at * (bb[1] - bb[0])) - rule.bands.wave * Math.sin(x * 260 + at * 17));
+          mask[v] = Math.max(mask[v], 1 - smoothstep(half * 0.55, half, d));
+        }
+      }
+    }
+  }
+  return { mask, bvh };
+}
+/**
+ * `veil` rules: a sheet over another muscle (the rectus sheath over rectus abdominis) is aponeurosis but
+ * thin, so the muscle beneath shows through: the mask is lowered to `strength` where a ray cast inwards
+ * meets the muscle beneath within `depth`, except where that muscle is itself tendinous (its tendinous
+ * intersections show on the sheath, to which they are attached).
+ */
+function applyVeils(it, mask, cfg, raw) {
+  for (const rule of cfg.rules ?? []) {
+    if (!rule.veil || !new RegExp(rule.match).test(it.name)) continue;
+    const under = items.filter((o) => new RegExp(rule.veil.over).test(o.name));
+    const r = new THREE.Ray();
+    const factor = new Float32Array(mask.length).fill(1);
+    for (let v = 0; v < mask.length; v++) {
+      if (mask[v] <= 0) continue;
+      let best = null;
+      // Both ways along the normal: a sheet's two faces look opposite ways.
+      for (const sign of [-1, 1]) {
+        r.origin.set(it.positions[v * 3], it.positions[v * 3 + 1], it.positions[v * 3 + 2]);
+        r.direction.set(it.normals[v * 3] * sign, it.normals[v * 3 + 1] * sign, it.normals[v * 3 + 2] * sign);
+        for (const o of under) {
+          const hit = raw.get(o).bvh.raycastFirst(r, THREE.DoubleSide, 0.0002, rule.veil.depth);
+          if (hit && (!best || hit.distance < best.hit.distance)) best = { hit, o };
+        }
+      }
+      if (!best) continue;
+      const m = raw.get(best.o).mask, f = best.hit.face;
+      const beneath = Math.min(1, (m[f.a] + m[f.b] + m[f.c]) / 3);
+      factor[v] = rule.veil.strength + (1 - rule.veil.strength) * beneath;
+    }
+    // Soften the veil's outline a little, then apply it to the finished mask.
+    const nb = neighbours(it);
+    for (let pass = 0; pass < 2; pass++) {
+      const next = Float32Array.from(factor);
+      for (let v = 0; v < factor.length; v++) { if (!nb[v].size) continue; let s = 0; for (const u of nb[v]) s += factor[u]; next[v] = 0.5 * factor[v] + (0.5 * s) / nb[v].size; }
+      factor.set(next);
+    }
+    for (let v = 0; v < mask.length; v++) mask[v] *= factor[v];
+  }
+}
+function neighbours(it) {
+  const nb = Array.from({ length: it.positions.length / 3 }, () => new Set());
+  for (let t = 0; t < it.indices.length; t += 3) {
+    const [a, b, c] = [it.indices[t], it.indices[t + 1], it.indices[t + 2]];
+    nb[a].add(b).add(c); nb[b].add(a).add(c); nb[c].add(a).add(b);
+  }
+  return nb;
+}
+/** Smooth the mask over the mesh, then sharpen its edge a little (the musculotendinous junction). */
+function finishMask(it, mask, cfg) {
+  const count = mask.length;
+  const nb = neighbours(it);
+  for (let pass = 0; pass < (cfg.smooth ?? 3); pass++) {
+    const next = Float32Array.from(mask);
+    for (let v = 0; v < count; v++) {
+      if (!nb[v].size) continue;
+      let s = 0;
+      for (const u of nb[v]) s += mask[u];
+      next[v] = 0.5 * mask[v] + (0.5 * s) / nb[v].size;
+    }
+    mask.set(next);
+  }
+  for (let v = 0; v < count; v++) mask[v] = smoothstep(0.25, 0.7, mask[v]);
+  return mask;
+}
+
 // ── Bake ────────────────────────────────────────────────────────────────────
 const ray = new THREE.Ray();
 const o = new THREE.Vector3(), n = new THREE.Vector3();
@@ -170,11 +339,21 @@ const D = config.aoDistance;
 const stats = {};
 let vertices = 0;
 const t0 = Date.now();
+// Tendon masks: every mesh's own first (veils read the masks of the muscles beneath), then the veils.
+const raw = new Map();
+if (entry.tendon) for (const it of items) raw.set(it, rawTendonMask(it, entry.tendon));
+const tendons = new Map();
+if (entry.tendon) for (const it of items) {
+  const mask = finishMask(it, Float32Array.from(raw.get(it).mask), entry.tendon);
+  applyVeils(it, mask, entry.tendon, raw);
+  tendons.set(it, mask);
+}
 for (const it of items) {
   const bvh = bvhFor(occluders[it.layer]);
   const count = it.positions.length / 3;
   const data = new Uint8Array(count * 4);
-  let aoSum = 0;
+  const tendon = tendons.get(it) ?? null;
+  let aoSum = 0, tendonSum = 0;
   for (let v = 0; v < count; v++) {
     const [x, y, z] = [it.positions[v * 3], it.positions[v * 3 + 1], it.positions[v * 3 + 2]];
     n.set(it.normals[v * 3], it.normals[v * 3 + 1], it.normals[v * 3 + 2]);
@@ -199,18 +378,24 @@ for (const it of items) {
     data[v * 4] = Math.round(Math.max(0, Math.min(1, ao)) * 255);
     data[v * 4 + 1] = Math.round(mottle(x, y, z) * 255);
     data[v * 4 + 2] = Math.round(f * 255);
-    data[v * 4 + 3] = 255;
+    data[v * 4 + 3] = tendon ? Math.round(tendon[v] * 255) : 255;
+    if (tendon) tendonSum += tendon[v];
   }
+  if (process.env.BAKE_DEBUG && tendon) console.error(`${it.name}\t${(tendonSum / count).toFixed(3)}`);
   vertices += count;
   const acc = doc.createAccessor(`${it.name}_tissue`).setType('VEC4').setArray(data).setNormalized(true)
     .setBuffer(doc.getRoot().listBuffers()[0]);
   it.prim.setAttribute('_TISSUE', acc);
-  stats[it.layer] ??= { meshes: 0, meanAO: 0, vertices: 0 };
+  stats[it.layer] ??= { meshes: 0, meanAO: 0, vertices: 0, ...(tendon ? { tendonShare: 0 } : {}) };
   stats[it.layer].meshes++;
   stats[it.layer].vertices += count;
   stats[it.layer].meanAO += aoSum;
+  if (tendon) stats[it.layer].tendonShare += tendonSum;
 }
-for (const s of Object.values(stats)) s.meanAO = Math.round((s.meanAO / s.vertices) * 1000) / 1000;
+for (const s of Object.values(stats)) {
+  s.meanAO = Math.round((s.meanAO / s.vertices) * 1000) / 1000;
+  if (s.tendonShare !== undefined) s.tendonShare = Math.round((s.tendonShare / s.vertices) * 1000) / 1000;
+}
 
 const glb = await io.writeBinary(doc);
 fs.writeFileSync(modelPath, glb);

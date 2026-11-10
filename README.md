@@ -47,7 +47,8 @@ See [docs/TESTING.md](docs/TESTING.md) for results and what is not verified, and
 ```sh
 node tools/make-muscles.mjs "<human-atlas>/public/models"      # names, sides and groups → src/lab/source/muscles.source.json
 node tools/extract-muscles.mjs "<human-atlas>/public/models"   # simplify, model the missing muscles, skin, classify depth → muscles.glb
-node tools/bake-shading.mjs                                    # ambient occlusion and mottling for the real-tissue look
+node tools/refine-muscles.mjs                                  # galea, flat linea alba, recti inside their sheath
+node tools/bake-shading.mjs muscles                            # ambient occlusion, mottling and the tendon mask for the real-tissue look
 node tools/validate-assets.mjs
 ```
 

@@ -2,9 +2,9 @@
  "outputs": {
   "muscles": {
    "file": "public/models/muscles.glb",
-   "bytes": 7032680,
-   "sha256": "5365faa411766b61ee617ed41123b8a3bec724ea674cc4246948c6e92b8cfa7e",
-   "triangles": 253417,
+   "bytes": 7593580,
+   "sha256": "12ddbf037af9395a1cb3dba624fdd833b064f95abba23642f08a604c3836cbf6",
+   "triangles": 274949,
    "sourceTriangles": 680102,
    "maxErrorPct": 1.192342
   }
@@ -1264,7 +1264,7 @@
   },
   "modelled": {
    "latissimus-dorsi": "Modelled: a sheet from the spinous processes of T7–L5 and the back of the iliac crest to the floor of the intertubercular groove of the humerus, wrapped over the ribs and the deep back muscles of this body (beneath the trapezius); 3–7 mm thick, tapering to its tendon.",
-   "rectus-abdominis": "Modelled: a strap about 6–8 mm thick from the pubic crest beside the symphysis to the xiphoid and costal cartilages 5–7 of this body, bowed 3 cm forwards like the abdominal wall; its tendinous intersections are not shown.",
+   "rectus-abdominis": "Modelled: a strap about 6–8 mm thick from the pubic crest beside the symphysis to the xiphoid and costal cartilages 5–7 of this body, bowed 3 cm forwards like the abdominal wall, with the linea alba between the two; its three tendinous intersections are shown as pale bands.",
    "internal-oblique": "Modelled: the BodyParts3D external oblique of this body moved 6 mm towards the trunk, trimmed below the 10th rib (the internal oblique reaches the lower three ribs); its fibres run at right angles to the external oblique’s, which the model does not show.",
    "transversus-abdominis": "Modelled: the BodyParts3D external oblique of this body moved 12 mm towards the trunk, trimmed below the 7th costal cartilage (the transversus arises from the inner surfaces of costal cartilages 7–12).",
    "quadratus-lumborum": "Modelled: a slab about 2 cm thick in the posterior abdominal wall of this body, from the back of the iliac crest to the lower border of the 12th rib, against the tips of the L1–L4 transverse processes.",
@@ -1273,7 +1273,7 @@
    "lateral-pterygoid": "Modelled: a tube 11 mm across from the lateral pterygoid plate of this sphenoid to the neck of the mandibular condyle.",
    "medial-pterygoid": "Modelled: a tube about 12 mm across from the pterygoid plates of this sphenoid to the inner surface of the mandibular angle, mirroring the masseter.",
    "orbicularis-oculi": "Modelled: a ring about 42 × 36 mm round the orbital opening, centred on this body’s eyeball (BodyParts3D sclera).",
-   "occipitofrontalis": "Modelled: its frontal belly cast onto the frontal bone above the brow and its occipital belly onto the occipital bone above the superior nuchal line, 2.5 mm thick; the epicranial aponeurosis between them is not shown.",
+   "occipitofrontalis": "Modelled: its frontal belly cast onto the frontal bone above the brow and its occipital belly onto the occipital bone above the superior nuchal line, 2.5 mm thick, joined over the vault by the epicranial aponeurosis (galea), a sheet 1 mm thick.",
    "zygomaticus-major": "Modelled: a strap from the zygomatic bone of this skull to the corner of the mouth.",
    "buccinator": "Modelled: a sheet cast onto the outer face of the molars and premolars of this body, from behind the second molar to the corner of the mouth.",
    "orbicularis-oris": "Modelled: an oval ring about 54 × 28 mm round the mouth, in front of the incisors of this body."
@@ -1722,12 +1722,121 @@
  },
  "shadingBake": {
   "tool": "tools/bake-shading.mjs",
-  "attribute": "_TISSUE (VEC4 unsigned byte, normalised): r ambient occlusion, g mottling noise, b fat proximity, a unused",
+  "attribute": "_TISSUE (VEC4 unsigned byte, normalised): r ambient occlusion, g mottling noise, b fat proximity, a tendon and aponeurosis",
   "settings": {
    "aoDistance": 0.01,
    "rays": 48,
    "rayOffset": 0.00025,
-   "noiseFrequency": 260
+   "noiseFrequency": 260,
+   "tendon": {
+    "$comment": "Tendon mask in _TISSUE.a. minBelly: muscles whose belly (85th percentile thickness) is thinner than this get no thickness-based tendon; thin: tendon below thin[0] × belly, fading out by thin[1] × belly; maxThickness: never tendon above this (m); outer: only outside the middle of the muscle along its long axis (distance from the middle, as a share of its length); rules add aponeuroses by node name.",
+    "minBelly": 0.008,
+    "thin": [
+     0.3,
+     0.5
+    ],
+    "maxThickness": 0.008,
+    "outer": [
+     0.06,
+     0.18
+    ],
+    "smooth": 3,
+    "rules": [
+     {
+      "$comment": "Epicranial aponeurosis (galea) between the bellies, 1 mm thick (tools/refine-muscles.mjs).",
+      "match": "^occipitofrontalis-",
+      "thinnerThan": 0.0015
+     },
+     {
+      "$comment": "The aponeuroses of the abdominal wall: the obliques and transversus turn into aponeurosis medially (the rectus sheath, meeting at the linea alba) and below the line from the anterior superior iliac spine to the umbilicus. border: [height y, distance from the midline |x|] in metres.",
+      "match": "^(external-oblique|internal-oblique|transversus-abdominis)-",
+      "medialOf": {
+       "border": [
+        [
+         -0.02,
+         0.15
+        ],
+        [
+         0.05,
+         0.115
+        ],
+        [
+         0.1,
+         0.085
+        ],
+        [
+         0.16,
+         0.074
+        ],
+        [
+         0.26,
+         0.076
+        ],
+        [
+         0.34,
+         0.088
+        ],
+        [
+         0.42,
+         0.095
+        ]
+       ],
+       "soft": 0.014
+      },
+      "veil": {
+       "over": "^rectus-abdominis-",
+       "strength": 0.4,
+       "depth": 0.03
+      }
+     },
+     {
+      "$comment": "The thoracolumbar fascia: latissimus dorsi arises by a broad aponeurosis from the lumbar spines and the iliac crest.",
+      "match": "^latissimus-dorsi-",
+      "medialOf": {
+       "border": [
+        [
+         0.04,
+         0.115
+        ],
+        [
+         0.12,
+         0.095
+        ],
+        [
+         0.2,
+         0.07
+        ],
+        [
+         0.27,
+         0.045
+        ],
+        [
+         0.33,
+         0.022
+        ],
+        [
+         0.38,
+         0
+        ]
+       ],
+       "soft": 0.02
+      }
+     },
+     {
+      "$comment": "The three tendinous intersections: at the umbilicus, at the xiphoid and midway (share of the muscle's height from the pubis).",
+      "match": "^rectus-abdominis-",
+      "bands": {
+       "at": [
+        0.45,
+        0.66,
+        0.86
+       ],
+       "width": 0.009,
+       "wave": 0.0015
+      }
+     }
+    ]
+   }
   },
   "bodies": {
    "muscles": {
@@ -1781,92 +1890,118 @@
       "foot"
      ]
     },
-    "unbakedSha256": "1f78e06012e77c5d9ebeceb63f169618cba731a979446dc5c34f5c76a4a4fefe",
-    "bakedSha256": "5365faa411766b61ee617ed41123b8a3bec724ea674cc4246948c6e92b8cfa7e",
-    "vertices": 127461,
+    "unbakedSha256": "bb2284cb73c917d1b885eede3d7e25eef41991d2e0c89041a8fb54375a15ecb0",
+    "bakedSha256": "12ddbf037af9395a1cb3dba624fdd833b064f95abba23642f08a604c3836cbf6",
+    "vertices": 138231,
     "layers": {
      "eye": {
       "meshes": 16,
       "meanAO": 0.839,
-      "vertices": 2781
+      "vertices": 2781,
+      "tendonShare": 0
      },
      "foot": {
       "meshes": 36,
       "meanAO": 0.796,
-      "vertices": 7645
+      "vertices": 7645,
+      "tendonShare": 0.046
      },
      "leg": {
       "meshes": 30,
       "meanAO": 0.793,
-      "vertices": 6545
+      "vertices": 6545,
+      "tendonShare": 0.234
      },
      "thigh": {
       "meshes": 32,
       "meanAO": 0.779,
-      "vertices": 7843
+      "vertices": 7843,
+      "tendonShare": 0.128
      },
      "hip": {
       "meshes": 24,
       "meanAO": 0.864,
-      "vertices": 5060
+      "vertices": 5060,
+      "tendonShare": 0.071
      },
      "thorax": {
       "meshes": 21,
       "meanAO": 0.679,
-      "vertices": 15115
+      "vertices": 15115,
+      "tendonShare": 0.033
      },
      "abdomen": {
       "meshes": 9,
-      "meanAO": 0.667,
-      "vertices": 12502
+      "meanAO": 0.648,
+      "vertices": 22128,
+      "tendonShare": 0.224
      },
      "pelvic-floor": {
       "meshes": 12,
       "meanAO": 0.699,
-      "vertices": 3676
+      "vertices": 3676,
+      "tendonShare": 0
      },
      "back": {
       "meshes": 73,
       "meanAO": 0.653,
-      "vertices": 20920
+      "vertices": 20920,
+      "tendonShare": 0.045
      },
      "hand": {
       "meshes": 26,
       "meanAO": 0.785,
-      "vertices": 6805
+      "vertices": 6805,
+      "tendonShare": 0
      },
      "shoulder": {
       "meshes": 18,
       "meanAO": 0.849,
-      "vertices": 3228
+      "vertices": 3228,
+      "tendonShare": 0.235
      },
      "forearm": {
       "meshes": 40,
       "meanAO": 0.705,
-      "vertices": 9018
+      "vertices": 9018,
+      "tendonShare": 0.226
      },
      "arm": {
       "meshes": 14,
       "meanAO": 0.847,
-      "vertices": 2869
+      "vertices": 2869,
+      "tendonShare": 0.255
      },
      "neck": {
       "meshes": 34,
       "meanAO": 0.794,
-      "vertices": 8015
+      "vertices": 8015,
+      "tendonShare": 0.028
      },
      "tongue-larynx": {
       "meshes": 26,
       "meanAO": 0.785,
-      "vertices": 9228
+      "vertices": 9228,
+      "tendonShare": 0.003
      },
      "face": {
       "meshes": 17,
-      "meanAO": 0.675,
-      "vertices": 6211
+      "meanAO": 0.712,
+      "vertices": 7355,
+      "tendonShare": 0.166
      }
     }
    }
+  }
+ },
+ "refine": {
+  "tool": "tools/refine-muscles.mjs",
+  "changes": {
+   "linea-alba": "rebuilt as a flat band 1.5 mm thick between the medial borders of the recti and of the external obliques’ aponeuroses, flush with the aponeuroses (the source part is a rod in front of and behind the recti)",
+   "rectus-abdominis-left": "sheared -11.203196 mm at the pubis and -1.627351 mm at the costal margin, so its medial border lies 4–11 mm from the midline, and moved up to 13.758946 mm back to lie behind the external oblique's aponeurosis",
+   "occipitofrontalis-left": "epicranial aponeurosis (galea) added: a sheet 1 mm thick over the vault between the bellies, 572 vertices",
+   "rectus-abdominis-right": "sheared 7.025997 mm at the pubis and -1.158873 mm at the costal margin, so its medial border lies 4–11 mm from the midline, and moved up to 14.480256 mm back to lie behind the external oblique's aponeurosis",
+   "occipitofrontalis-right": "epicranial aponeurosis (galea) added: a sheet 1 mm thick over the vault between the bellies, 572 vertices"
   }
  }
 }

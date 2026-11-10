@@ -10,14 +10,16 @@ import { isRest, poseMatrices } from '../lab/rig';
 import { flatten, skin } from '../lab/skinning';
 import type { Pose } from '../lab/joints';
 import type { Role } from '../lab/muscle-data';
-import { baseColour, BONE, cutColour, GLOW, HIGHLIGHT, HOVER, INJURED, realLook, realOpacity, ROLE_COLOUR } from './palette';
+import { baseColour, BONE, cutColour, GLOW, HIGHLIGHT, HOVER, INJURED, isTendon, realLook, realOpacity, ROLE_COLOUR, tendonColour } from './palette';
 import { closeHoles } from './closeHoles';
-import { applyQuality, hasTissueData, makeTissueMaterial, quality, type TissueMaterial } from './tissue';
+import { fibreCoords } from './fibres';
+import { applyQuality, hasTissueData, makeTissueMaterial, quality, setTendonColour, type TissueMaterial } from './tissue';
 
 export const modelUrl = () => `${import.meta.env.BASE_URL}models/muscles.glb`;
 export const bonesUrl = () => `${import.meta.env.BASE_URL}models/skeleton.glb`;
 
 const GREY = new THREE.Color('#a59a96');
+const WHITE = new THREE.Color('#ffffff');
 const HIGHLIGHT_COLOUR = new THREE.Color(HIGHLIGHT);
 const GLOW_COLOUR = new THREE.Color(GLOW);
 const INJURED_COLOUR = new THREE.Color(INJURED);
@@ -52,7 +54,7 @@ export interface ModelView {
 
 interface Cap { back: THREE.Mesh; front: THREE.Mesh; face: THREE.Mesh; material: THREE.MeshStandardMaterial; closed: THREE.BufferGeometry }
 /** A muscle. Its cut cap is built the first time a cut crosses it (closing a mesh is costly). */
-interface Part { id: string; mesh: THREE.Mesh; material: TissueMaterial; structure: AnatomicalStructure; box: THREE.Box3; cap: Cap | null; order: number; capSize: number; capTint: THREE.Color; rest: Float32Array; restNormal: Float32Array; skin: Float32Array }
+interface Part { id: string; mesh: THREE.Mesh; material: TissueMaterial; structure: AnatomicalStructure; box: THREE.Box3; cap: Cap | null; order: number; capSize: number; capTint: THREE.Color; tendonTint: THREE.Color; rest: Float32Array; restNormal: Float32Array; skin: Float32Array }
 
 /** Cut-face grain: one tile of the noise texture spans this many metres. */
 const GRAIN_TILE = 0.01;
@@ -147,7 +149,7 @@ export function MuscleModel({ onReady, view }: { onReady?: () => void; view: Mod
       const id = o.name || o.parent?.name || '';
       const s = def.structures.find((x) => x.id === id);
       if (!s) return;
-      const material = makeTissueMaterial(realLook(s), hasTissueData(o));
+      const material = makeTissueMaterial(realLook(s), hasTissueData(o), true);
       material.clippingPlanes = [clip.plane];
       o.geometry.computeBoundingBox();
       const box = o.geometry.boundingBox!.clone();
@@ -164,8 +166,10 @@ export function MuscleModel({ onReady, view }: { onReady?: () => void; view: Mod
       const rest = copy('position'), restNormal = copy('normal'), skinArr = copy('_skin');
       o.geometry.setAttribute('position', new THREE.BufferAttribute(Float32Array.from(rest), 3).setUsage(THREE.DynamicDrawUsage));
       o.geometry.setAttribute('normal', new THREE.BufferAttribute(Float32Array.from(restNormal), 3).setUsage(THREE.DynamicDrawUsage));
+      // Where the fibres run (from the rest shape; the coordinates then ride with the vertices when posed).
+      if (!o.geometry.getAttribute('fibre')) o.geometry.setAttribute('fibre', new THREE.BufferAttribute(fibreCoords(rest, id, restNormal), 4));
       skinData.parts.set(id, { rest, skin: skinArr, ends: (geometry[id]?.ends ?? [0, 0]) as [number, number] });
-      out.set(id, { id, mesh: o, material, structure: s, box, cap: null, order: 0, capSize, capTint: new THREE.Color(cutColour(s)), rest, restNormal, skin: skinArr });
+      out.set(id, { id, mesh: o, material, structure: s, box, cap: null, order: 0, capSize, capTint: new THREE.Color(cutColour(s)), tendonTint: new THREE.Color(tendonColour(s)), rest, restNormal, skin: skinArr });
     });
     // Large structures first, so smaller ones inside them draw their caps last.
     const sorted = [...out.values()].sort((a, b) => b.box.getSize(new THREE.Vector3()).lengthSq() - a.box.getSize(new THREE.Vector3()).lengthSq());
@@ -277,6 +281,19 @@ export function MuscleModel({ onReady, view }: { onReady?: () => void; view: Mod
       else if (work !== undefined && colourBy === 'real') p.material.color.lerp(GLOW_COLOUR, 0.15 + 0.5 * work);
       else if (isLit && colourBy === 'real') p.material.color.lerp(HIGHLIGHT_COLOUR, 0.35);
       else if (dim) p.material.color.lerp(GREY, 0.45);
+      // Tendon parts: pearly off-white in the real look (following the same highlight, glow and dimming);
+      // in a colour mode, or for a role or injury, a paler shade of the muscle's colour.
+      const t = p.tendonTint;
+      if (colourBy === 'real' && !hurt && !role) {
+        t.set(tendonColour(s));
+        if (work !== undefined) t.lerp(GLOW_COLOUR, 0.15 + 0.5 * work);
+        else if (isLit) t.lerp(HIGHLIGHT_COLOUR, 0.35);
+        else if (dim) t.lerp(GREY, 0.45);
+      } else {
+        t.copy(p.material.color);
+        if (!isTendon(s)) t.lerp(WHITE, 0.4);
+      }
+      setTendonColour(p.material, t);
       const emissive = hurt ? INJURED_COLOUR : role ? new THREE.Color(ROLE_COLOUR[role]) : work !== undefined ? GLOW_COLOUR : isLit ? (colourBy === 'real' ? HIGHLIGHT_COLOUR : p.material.color) : null;
       if (emissive) { p.material.emissive.copy(emissive); p.material.emissiveIntensity = hurt ? 0.3 : role === 'prime' ? 0.38 : role ? 0.25 : work !== undefined ? 0.1 + 0.3 * work : 0.3; }
       else { p.material.emissive.set(isHover ? HOVER : '#000000'); p.material.emissiveIntensity = isHover ? 0.3 : 0; }

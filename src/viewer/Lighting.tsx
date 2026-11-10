@@ -48,7 +48,8 @@ export function Lighting() {
     <>
       <hemisphereLight args={['#fff8f2', '#5a4440', 0.45]} />
       <directionalLight position={[0.5, 0.8, 0.9]} intensity={1.7} color="#fff1e6" />
-      <directionalLight position={[-0.7, 0.3, -0.9]} intensity={0.9} color="#f4ece6" />
+      {/* The back view is a main view of this lab: the back light is nearly a second key light. */}
+      <directionalLight position={[-0.55, 0.55, -0.9]} intensity={1.45} color="#f4ece6" />
       <directionalLight position={[-0.4, -0.6, 0.5]} intensity={0.35} color="#ffe0d6" />
     </>
   );

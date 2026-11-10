@@ -16,6 +16,7 @@
     "e2e": "playwright test",
     "validate:assets": "node tools/validate-assets.mjs",
     "bake:shading": "node tools/bake-shading.mjs",
+    "muscles:refine": "node tools/refine-muscles.mjs",
     "structures": "node tools/make-structures.mjs",
     "extract": "node tools/extract-skeleton.mjs",
     "muscles:structures": "node tools/make-muscles.mjs",

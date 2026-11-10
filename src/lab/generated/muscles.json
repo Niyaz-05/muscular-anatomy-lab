@@ -8723,51 +8723,51 @@
    "exposed": 0.606061,
    "bounds": [
     [
-     -0.009106,
-     0.00552,
-     0.00383
+     -0.014543,
+     0.031757,
+     0.048163
     ],
     [
-     0.007643,
-     0.393348,
-     0.102534
+     0.013928,
+     0.385118,
+     0.104114
     ]
    ],
    "centroid": [
-    -0.000478,
-    0.206539,
-    0.071955
+    -0.000161,
+    0.208438,
+    0.087925
    ],
    "surfaceAnchor": [
-    -0.001157,
-    0.206287,
-    0.077937
+    -0.000192,
+    0.204678,
+    0.092049
    ],
    "axes": [
     [
-     -0.001995,
-     0.98245,
-     0.186513
+     -0.000538,
+     0.991865,
+     0.12729
     ],
     [
-     0.034217,
-     -0.186337,
-     0.98189
+     1,
+     0.000461,
+     0.000631
     ],
     [
-     0.999412,
-     0.008341,
-     -0.033245
+     -0.000567,
+     -0.127291,
+     0.991865
     ]
    ],
    "extentsMm": [
-    397.330107,
-    49.741803,
-    17.120017
+    356.812578,
+    28.473787,
+    24.280028
    ],
    "ends": [
-    63,
-    85
+    243,
+    238
    ],
    "bones": [
     "xiphoid",
@@ -8775,8 +8775,8 @@
     "hip-bone-left",
     "costal-cartilage-7-left"
    ],
-   "vertexCount": 394,
-   "triangleCount": 784
+   "vertexCount": 480,
+   "triangleCount": 956
   },
   "coccygeus-left": {
    "layer": "pelvic-floor",
@@ -24688,47 +24688,47 @@
    "exposed": 0.4375,
    "bounds": [
     [
-     0.012627,
+     0.004,
      0.027745,
      0.020043
     ],
     [
-     0.075332,
+     0.072452,
      0.379145,
-     0.106071
+     0.10239
     ]
    ],
    "centroid": [
-    0.035951,
-    0.186242,
-    0.077142
+    0.029127,
+    0.186247,
+    0.073516
    ],
    "surfaceAnchor": [
-    0.041356,
-    0.187603,
-    0.087188
+    0.029461,
+    0.186637,
+    0.07564
    ],
    "axes": [
     [
-     0.037564,
-     0.973046,
-     0.227531
+     0.066876,
+     0.975581,
+     0.209211
     ],
     [
-     0.995103,
-     -0.057256,
-     0.080571
+     0.994414,
+     -0.082331,
+     0.066049
     ],
     [
-     -0.091427,
-     -0.223391,
-     0.970432
+     -0.081661,
+     -0.203625,
+     0.975637
     ]
    ],
    "extentsMm": [
-    360.430202,
-    65.007014,
-    40.060653
+    359.224394,
+    65.555307,
+    36.171126
    ],
    "ends": [
     160,
@@ -24740,8 +24740,8 @@
     "disc-l3",
     "disc-l4"
    ],
-   "vertexCount": 320,
-   "triangleCount": 636,
+   "vertexCount": 5090,
+   "triangleCount": 10176,
    "modelled": true
   },
   "internal-oblique-left": {
@@ -25253,58 +25253,58 @@
    "exposed": 0.975,
    "bounds": [
     [
-     0.004059,
-     0.722852,
+     0.000544,
+     0.722521,
      -0.128955
     ],
     [
-     0.049949,
-     0.814989,
+     0.066919,
+     0.854494,
      0.072134
     ]
    ],
    "centroid": [
-    0.028333,
-    0.765168,
-    -0.018639
+    0.030348,
+    0.798802,
+    -0.04548
    ],
    "surfaceAnchor": [
-    0.02469,
-    0.755304,
-    0.03117
+    0.056774,
+    0.82819,
+    -0.037642
    ],
    "axes": [
     [
-     -0.019279,
-     0.250711,
-     0.96787
+     -0.012827,
+     0.151107,
+     0.988434
     ],
     [
-     0.045967,
-     0.967249,
-     -0.249634
+     0.001207,
+     0.988517,
+     -0.151104
     ],
     [
-     0.998757,
-     -0.039677,
-     0.030171
+     0.999917,
+     0.000745,
+     0.012862
     ]
    ],
    "extentsMm": [
-    202.359593,
-    71.338591,
-    47.536957
+    202.283739,
+    123.374515,
+    67.606797
    ],
    "ends": [
-    241,
+    261,
     51
    ],
    "bones": [
     "frontal",
     "occipital"
    ],
-   "vertexCount": 360,
-   "triangleCount": 712,
+   "vertexCount": 932,
+   "triangleCount": 1852,
    "modelled": true
   },
   "zygomaticus-major-left": {
@@ -25565,47 +25565,47 @@
    "exposed": 0.4125,
    "bounds": [
     [
-     -0.075691,
+     -0.075571,
      0.027731,
      0.020038
     ],
     [
-     0.003026,
+     -0.004,
      0.377076,
-     0.105251
+     0.102588
     ]
    ],
    "centroid": [
-    -0.026355,
-    0.186987,
-    0.077097
+    -0.029562,
+    0.186999,
+    0.073457
    ],
    "surfaceAnchor": [
-    -0.021096,
-    0.180863,
-    0.084811
+    -0.029338,
+    0.185721,
+    0.075722
    ],
    "axes": [
     [
-     -0.09156,
-     0.969949,
-     0.225423
+     -0.067495,
+     0.975555,
+     0.209132
     ],
     [
-     0.991394,
-     0.11006,
-     -0.070892
+     0.996428,
+     0.076571,
+     -0.0356
     ],
     [
-     0.093572,
-     -0.216992,
-     0.971678
+     0.050743,
+     -0.205983,
+     0.977239
     ]
    ],
    "extentsMm": [
-    358.303563,
-    67.532517,
-    40.047684
+    357.378335,
+    67.26807,
+    36.586944
    ],
    "ends": [
     160,
@@ -25617,8 +25617,8 @@
     "disc-l3",
     "disc-l4"
    ],
-   "vertexCount": 320,
-   "triangleCount": 636,
+   "vertexCount": 5090,
+   "triangleCount": 10176,
    "modelled": true
   },
   "internal-oblique-right": {
@@ -26130,58 +26130,58 @@
    "exposed": 0.975,
    "bounds": [
     [
-     -0.049949,
+     -0.06814,
      0.722852,
      -0.129033
     ],
     [
-     -0.004059,
-     0.814963,
+     -0.000538,
+     0.854455,
      0.072193
     ]
    ],
    "centroid": [
-    -0.028333,
-    0.765153,
-    -0.018652
+    -0.030578,
+    0.798899,
+    -0.045382
    ],
    "surfaceAnchor": [
-    -0.02469,
-    0.755277,
-    0.030956
+    -0.057782,
+    0.82861,
+    -0.037111
    ],
    "axes": [
     [
-     0.018974,
-     0.24922,
-     0.968261
+     0.012773,
+     0.151111,
+     0.988434
     ],
     [
-     -0.043838,
-     0.967711,
-     -0.248219
+     -0.005565,
+     0.98851,
+     -0.151051
     ],
     [
-     0.998858,
-     0.037737,
-     -0.029286
+     0.999903,
+     0.003571,
+     -0.013467
     ]
    ],
    "extentsMm": [
-    202.366236,
-    70.480599,
-    47.493235
+    202.252246,
+    123.039421,
+    68.883476
    ],
    "ends": [
-    241,
+    261,
     51
    ],
    "bones": [
     "frontal",
     "occipital"
    ],
-   "vertexCount": 360,
-   "triangleCount": 712,
+   "vertexCount": 932,
+   "triangleCount": 1852,
    "modelled": true
   },
   "zygomaticus-major-right": {
@@ -26610,7 +26610,7 @@
   },
   "$modelled": {
    "latissimus-dorsi": "Modelled: a sheet from the spinous processes of T7–L5 and the back of the iliac crest to the floor of the intertubercular groove of the humerus, wrapped over the ribs and the deep back muscles of this body (beneath the trapezius); 3–7 mm thick, tapering to its tendon.",
-   "rectus-abdominis": "Modelled: a strap about 6–8 mm thick from the pubic crest beside the symphysis to the xiphoid and costal cartilages 5–7 of this body, bowed 3 cm forwards like the abdominal wall; its tendinous intersections are not shown.",
+   "rectus-abdominis": "Modelled: a strap about 6–8 mm thick from the pubic crest beside the symphysis to the xiphoid and costal cartilages 5–7 of this body, bowed 3 cm forwards like the abdominal wall, with the linea alba between the two; its three tendinous intersections are shown as pale bands.",
    "internal-oblique": "Modelled: the BodyParts3D external oblique of this body moved 6 mm towards the trunk, trimmed below the 10th rib (the internal oblique reaches the lower three ribs); its fibres run at right angles to the external oblique’s, which the model does not show.",
    "transversus-abdominis": "Modelled: the BodyParts3D external oblique of this body moved 12 mm towards the trunk, trimmed below the 7th costal cartilage (the transversus arises from the inner surfaces of costal cartilages 7–12).",
    "quadratus-lumborum": "Modelled: a slab about 2 cm thick in the posterior abdominal wall of this body, from the back of the iliac crest to the lower border of the 12th rib, against the tips of the L1–L4 transverse processes.",
@@ -26619,7 +26619,7 @@
    "lateral-pterygoid": "Modelled: a tube 11 mm across from the lateral pterygoid plate of this sphenoid to the neck of the mandibular condyle.",
    "medial-pterygoid": "Modelled: a tube about 12 mm across from the pterygoid plates of this sphenoid to the inner surface of the mandibular angle, mirroring the masseter.",
    "orbicularis-oculi": "Modelled: a ring about 42 × 36 mm round the orbital opening, centred on this body’s eyeball (BodyParts3D sclera).",
-   "occipitofrontalis": "Modelled: its frontal belly cast onto the frontal bone above the brow and its occipital belly onto the occipital bone above the superior nuchal line, 2.5 mm thick; the epicranial aponeurosis between them is not shown.",
+   "occipitofrontalis": "Modelled: its frontal belly cast onto the frontal bone above the brow and its occipital belly onto the occipital bone above the superior nuchal line, 2.5 mm thick, joined over the vault by the epicranial aponeurosis (galea), a sheet 1 mm thick.",
    "zygomaticus-major": "Modelled: a strap from the zygomatic bone of this skull to the corner of the mouth.",
    "buccinator": "Modelled: a sheet cast onto the outer face of the molars and premolars of this body, from behind the second molar to the corner of the mouth.",
    "orbicularis-oris": "Modelled: an oval ring about 54 × 28 mm round the mouth, in front of the incisors of this body."
