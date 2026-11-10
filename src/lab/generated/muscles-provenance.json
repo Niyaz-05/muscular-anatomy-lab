@@ -3,7 +3,7 @@
   "muscles": {
    "file": "public/models/muscles.glb",
    "bytes": 7593580,
-   "sha256": "12ddbf037af9395a1cb3dba624fdd833b064f95abba23642f08a604c3836cbf6",
+   "sha256": "3d01260b09bc64e0727edb5226c01cc9c2407c75c0351a3b5bc581b6ce304a87",
    "triangles": 274949,
    "sourceTriangles": 680102,
    "maxErrorPct": 1.192342
@@ -1774,19 +1774,24 @@
         ],
         [
          0.34,
-         0.088
+         0.092
+        ],
+        [
+         0.38,
+         0.104
         ],
         [
          0.42,
-         0.095
+         0.106
         ]
        ],
-       "soft": 0.014
+       "soft": 0.008
       },
       "veil": {
        "over": "^rectus-abdominis-",
-       "strength": 0.4,
-       "depth": 0.03
+       "strength": 0.42,
+       "depth": 0.03,
+       "smooth": 8
       }
      },
      {
@@ -1820,6 +1825,14 @@
         ]
        ],
        "soft": 0.02
+      }
+     },
+     {
+      "$comment": "The abdominal part of pectoralis major arises by a short aponeurosis from the front of the rectus sheath; its lowest tip shows on the sheath.",
+      "match": "^pectoralis-major-abdominal-part-",
+      "below": {
+       "y": 0.385,
+       "soft": 0.025
       }
      },
      {
@@ -1891,7 +1904,7 @@
      ]
     },
     "unbakedSha256": "bb2284cb73c917d1b885eede3d7e25eef41991d2e0c89041a8fb54375a15ecb0",
-    "bakedSha256": "12ddbf037af9395a1cb3dba624fdd833b064f95abba23642f08a604c3836cbf6",
+    "bakedSha256": "3d01260b09bc64e0727edb5226c01cc9c2407c75c0351a3b5bc581b6ce304a87",
     "vertices": 138231,
     "layers": {
      "eye": {
@@ -1928,13 +1941,13 @@
       "meshes": 21,
       "meanAO": 0.679,
       "vertices": 15115,
-      "tendonShare": 0.033
+      "tendonShare": 0.043
      },
      "abdomen": {
       "meshes": 9,
       "meanAO": 0.648,
       "vertices": 22128,
-      "tendonShare": 0.224
+      "tendonShare": 0.231
      },
      "pelvic-floor": {
       "meshes": 12,

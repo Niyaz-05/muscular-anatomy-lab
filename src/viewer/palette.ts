@@ -15,7 +15,7 @@ const MUSCLE: TissueLook = {
   color: '#8f3a33', roughness: 0.6, clearcoat: 0.28, clearcoatRoughness: 0.38, sheen: 0.3, sheenColor: '#ffb7a8', rim: 0.16, rimColor: '#ff7a64', ao: 0.95, mottle: 0.32, mottleTint: '#6a2420',
   tendon: 1, tendonColor: TENDON_COLOUR, tendonRoughness: 0.3, fibre: 0.55, fibreScale: 0.006, edge: 0.45,
 };
-const TENDON: TissueLook = { color: TENDON_COLOUR, roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.15, sheen: 0.5, sheenColor: '#ffffff', rim: 0.15, rimColor: '#f4f1e8', ao: 0.7, mottle: 0.18, mottleTint: '#c6bca4', tendon: 1, tendonColor: TENDON_COLOUR, fibre: 0.25, fibreScale: 0.003 };
+const TENDON: TissueLook = { color: TENDON_COLOUR, roughness: 0.3, clearcoat: 0.8, clearcoatRoughness: 0.15, sheen: 0.5, sheenColor: '#ffffff', rim: 0.15, rimColor: '#f4f1e8', ao: 0.7, mottle: 0.18, mottleTint: '#c6bca4', tendon: 1, tendonColor: TENDON_COLOUR, fibre: 0.12, fibreScale: 0.003 };
 
 const hash = (id: string, salt = 0) => { let h = 2166136261 ^ salt; for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619); h = Math.imul(h ^ (h >>> 15), 2246822507); return ((h >>> 0) % 1000) / 1000; };
 /** A colour a little lighter or darker (t: 0–1) and a little warmer or cooler (u: 0–1). */

@@ -251,6 +251,11 @@ function rawTendonMask(it, cfg) {
         mask[v] = Math.max(mask[v], 1 - smoothstep(b - soft / 2, b + soft / 2, x));
       }
     }
+    if (rule.below) {
+      // Aponeurosis below a height (m), fading in over `soft`: an origin from a fascial sheet.
+      const { y: by, soft } = rule.below;
+      for (let v = 0; v < count; v++) mask[v] = Math.max(mask[v], 1 - smoothstep(by - soft / 2, by + soft / 2, it.positions[v * 3 + 1]));
+    }
     if (rule.bands) {
       if (!bb) { bb = [Infinity, -Infinity]; for (let v = 0; v < count; v++) { bb[0] = Math.min(bb[0], it.positions[v * 3 + 1]); bb[1] = Math.max(bb[1], it.positions[v * 3 + 1]); } }
       const half = rule.bands.width / 2;
@@ -295,9 +300,9 @@ function applyVeils(it, mask, cfg, raw) {
       const beneath = Math.min(1, (m[f.a] + m[f.b] + m[f.c]) / 3);
       factor[v] = rule.veil.strength + (1 - rule.veil.strength) * beneath;
     }
-    // Soften the veil's outline a little, then apply it to the finished mask.
+    // Smooth the veil well (single inward rays leave it speckled), then apply it to the finished mask.
     const nb = neighbours(it);
-    for (let pass = 0; pass < 2; pass++) {
+    for (let pass = 0; pass < (rule.veil.smooth ?? 2); pass++) {
       const next = Float32Array.from(factor);
       for (let v = 0; v < factor.length; v++) { if (!nb[v].size) continue; let s = 0; for (const u of nb[v]) s += factor[u]; next[v] = 0.5 * factor[v] + (0.5 * s) / nb[v].size; }
       factor.set(next);

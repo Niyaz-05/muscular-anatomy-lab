@@ -276,8 +276,10 @@ export function makeTissueMaterial(look: TissueLook, baked: boolean, fibres = fa
           '  float tissueGrain = tissueFibre(vFibre.xy, vFibre.z, uFibreScale * mix(1.0, 0.45, tissueTendon), tissueHeight);',
           // Where the surface cuts across the fibres, the grain fades rather than show their cross-sections.
           '  float tissueAlong = uFibre * (1.0 - smoothstep(0.45, 0.8, vFibre.w));',
-          '  diffuseColor.rgb *= max(0.0, 1.0 + tissueAlong * mix(1.0, 0.12, tissueTendon) * tissueGrain);',
-          '  tissueHeight *= tissueAlong * mix(1.0, 0.12, tissueTendon);',
+          // The grain goes early as tissue turns tendinous, so a half-tendon edge reads clean, not hairy.
+          '  float tissueFlesh = mix(1.0, 0.12, smoothstep(0.0, 0.55, tissueTendon));',
+          '  diffuseColor.rgb *= max(0.0, 1.0 + tissueAlong * tissueFlesh * tissueGrain);',
+          '  tissueHeight *= tissueAlong * tissueFlesh;',
           '#endif',
         ].join('\n'),
       )
